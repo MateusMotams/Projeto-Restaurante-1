@@ -18,7 +18,7 @@ public class Mesa {
     estados estadoAtual = TEST;
     int numeroMesa = 0;
     int numeroCadeiras;
-    boolean reserva = false;
+    boolean reserva = false; //Por padrão a mesa ao ser criada, não está reservada.
 
     public int getNumeroMesa() {
         return numeroMesa;

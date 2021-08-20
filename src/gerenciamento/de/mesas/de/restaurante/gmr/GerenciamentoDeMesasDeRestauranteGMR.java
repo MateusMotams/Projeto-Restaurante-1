@@ -5,6 +5,7 @@
  */
 package gerenciamento.de.mesas.de.restaurante.gmr;
 
+import static gerenciamento.de.mesas.de.restaurante.gmr.Mesa.estados.DESINFECTAR;
 import static gerenciamento.de.mesas.de.restaurante.gmr.Mesa.estados.LIVRE;
 
 /**
@@ -13,13 +14,34 @@ import static gerenciamento.de.mesas.de.restaurante.gmr.Mesa.estados.LIVRE;
  */
 public class GerenciamentoDeMesasDeRestauranteGMR {
 
-    public boolean mesaLivre(Mesa mesa){
+    public static boolean mesaLivre(Mesa mesa){ //FUNÇÃO PRONTA!
+        if(mesa.estadoAtual == LIVRE && mesa.isReserva() == false){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
+    public static Mesa liberarMesa(Mesa mesa){
+        if(mesa.estadoAtual == DESINFECTAR){
+            desinfectarMesa(mesa);
+        }
+        
+        
+        /*
         if(mesa.isReserva() == true)
         {
             return false;
         }else{
             return true;
         }
+        */
+        
+        /*
+        if(mesa.getEstadoAtual() == DESINFECTAR){
+            desinfectar
+        }
+        */
     }
     
     public void criarMesa(Mesa vetor_mesa[], int contadorNumeroDaMesa){
@@ -27,10 +49,31 @@ public class GerenciamentoDeMesasDeRestauranteGMR {
         vetor_mesa[contadorNumeroDaMesa].setReserva(false);
         vetor_mesa[contadorNumeroDaMesa].setNumeroMesa((contadorNumeroDaMesa + 1));
     }
+    
+    public static Mesa desinfectarMesa(Mesa mesaASerLimpa){ //FUNÇÃO PRONTA!
+        if(mesaASerLimpa.estadoAtual == DESINFECTAR){
+            mesaASerLimpa.estadoAtual = LIVRE;
+        }
+        return mesaASerLimpa;
+    }
+    
     public static void main(String[] args) {
-        Mesa vetMesa[] = new Mesa[20];
+        //Mesa vetMesa[] = new Mesa[20];
+        
+        Mesa mesa01 = new Mesa();
+        mesa01.estadoAtual = DESINFECTAR;
+        
+        System.out.println("Estado da mesa01 ANTES: " + mesa01.estadoAtual);
+        
+        //mesa01 = desinfectarMesa(mesa01);
+        
+        
+        System.out.println("A mesa01 esta livre: " + mesaLivre(mesa01));
+        
+        
+        
+        
         /*
-        Mesa mesa02 = new Mesa();
         Mesa mesa03 = new Mesa();
         Mesa mesa04 = new Mesa();
         Mesa mesa05 = new Mesa();
@@ -52,9 +95,11 @@ public class GerenciamentoDeMesasDeRestauranteGMR {
         */
         int cont = 0;
         
+        /*
         for(cont = 0; cont < 20; cont++){
             criarMesa(vetMesa, cont);
         }
+        */
     }
     
 }
