@@ -11,16 +11,16 @@ package gerenciamento.de.mesas.de.restaurante.gmr;
  */
 
 public class Cliente {
-    boolean temperatura;
+    boolean temperaturaSegura;
     boolean usaMascara;
-    int idClient;
+    int idCliente;
 
-    public boolean isTemperatura() {
-        return temperatura;
+    public boolean isTemperaturaSegura() {
+        return temperaturaSegura;
     }
 
-    public void setTemperatura(boolean temperatura) {
-        this.temperatura = temperatura;
+    public void setTemperaturaSegura(boolean temperaturaSegura) {
+        this.temperaturaSegura = temperaturaSegura;
     }
 
     public boolean isUsaMascara() {
@@ -31,12 +31,13 @@ public class Cliente {
         this.usaMascara = usaMascara;
     }
 
-    public int getIdClient() {
-        return idClient;
+    public int getIdCliente() {
+        return idCliente;
     }
 
-    public void setIdClient(int idClient) {
-        this.idClient = idClient;
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
     }
+
     
 }

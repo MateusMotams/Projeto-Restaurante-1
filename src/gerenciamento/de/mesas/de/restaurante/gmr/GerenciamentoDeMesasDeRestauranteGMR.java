@@ -6,6 +6,7 @@
 package gerenciamento.de.mesas.de.restaurante.gmr;
 
 import static gerenciamento.de.mesas.de.restaurante.gmr.Mesa.estados.DESINFECTAR;
+import static gerenciamento.de.mesas.de.restaurante.gmr.Mesa.estados.DISTANCIAMENTO_SOCIAL;
 import static gerenciamento.de.mesas.de.restaurante.gmr.Mesa.estados.LIVRE;
 
 /**
@@ -42,6 +43,7 @@ public class GerenciamentoDeMesasDeRestauranteGMR {
             desinfectar
         }
         */
+        return mesa;
     }
     
     public void criarMesa(Mesa vetor_mesa[], int contadorNumeroDaMesa){
@@ -57,18 +59,47 @@ public class GerenciamentoDeMesasDeRestauranteGMR {
         return mesaASerLimpa;
     }
     
+    public static void distanciamentoMesa(Mesa vetMesa[], int numeroMesa){
+        int cont = 0;
+        int idMesa = numeroMesa - 1;
+        
+        if(numeroMesa >= 0 && numeroMesa <= 30){
+            vetMesa[idMesa - 1].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa anterior
+            vetMesa[idMesa + 1].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa seguinte
+            vetMesa[idMesa + 6].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa inferior
+            vetMesa[idMesa - 6].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa superior
+        }
+        
+    }
+    
     public static void main(String[] args) {
-        //Mesa vetMesa[] = new Mesa[20];
+        Mesa vetMesa[] = new Mesa[30];
         
-        Mesa mesa01 = new Mesa();
-        mesa01.estadoAtual = DESINFECTAR;
+        int i;
         
-        System.out.println("Estado da mesa01 ANTES: " + mesa01.estadoAtual);
+        for(i = 0; i < 30; i++){
+            vetMesa[i].setEstadoAtual(LIVRE);
+        }
+        
+        for(i = 0; i < 30; i++){
+            vetMesa[i].setNumeroMesa(i + 1);
+        }
+        
+       distanciamentoMesa(vetMesa, 15);
+       
+        System.out.println("\nEstado da mesa 9: " + vetMesa[8].estadoAtual);
+        System.out.println("\nEstado da mesa 21: " + vetMesa[21].estadoAtual);
+        System.out.println("\nEstado da mesa 14: " + vetMesa[14].estadoAtual);
+        System.out.println("\nEstado da mesa 16: " + vetMesa[16].estadoAtual);
+        
+        //mesa01.estadoAtual = DESINFECTAR;
+        
+        //System.out.println("Estado da mesa01 ANTES: " + mesa01.estadoAtual);
         
         //mesa01 = desinfectarMesa(mesa01);
         
         
-        System.out.println("A mesa01 esta livre: " + mesaLivre(mesa01));
+        //System.out.println("A mesa01 esta livre: " + mesaLivre(mesa01));
         
         
         
