@@ -221,11 +221,11 @@ public class GerenciamentoDeMesasDeRestauranteGMR {
                     cont++;
                 }
         }   
-         MapaMesas mesas = new MapaMesas();
+         MapaMesas mesas = new MapaMesas(matMesa);
          mesas.setVisible(true);
          
                     
-        
+        /*
         ocuparMesa(matMesa, 1);
         System.out.println("\nEstado da mesa 1: " + matMesa[0][0].estadoAtual);
         System.out.println("\nEstado da mesa 2: " + matMesa[0][1].estadoAtual);
@@ -241,7 +241,7 @@ public class GerenciamentoDeMesasDeRestauranteGMR {
         System.out.println("\nEstado da mesa 13: " + matMesa[2][0].estadoAtual);
         System.out.println("\nEstado da mesa 14: " + matMesa[2][1].estadoAtual);
         System.out.println("\nEstado da mesa 19: " + matMesa[3][0].estadoAtual);
-        
+        */
     }
     
 }

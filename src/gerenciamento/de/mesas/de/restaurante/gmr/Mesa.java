@@ -17,7 +17,7 @@ public class Mesa {
     
     enum estados {LIVRE, OCUPADA, DESINFECTAR, RESERVADA, DISTANCIAMENTO_SOCIAL, TEST};
     public estados estadoAtual = LIVRE;
-    public int numeroMesa = 0;
+    public int numeroMesa;
     public int numeroCadeiras = 4;
     public boolean reserva = false; //Por padrão a mesa ao ser criada, não está reservada.
 
@@ -53,5 +53,5 @@ public class Mesa {
         this.reserva = reserva;
     }
 
-
+    
 }
