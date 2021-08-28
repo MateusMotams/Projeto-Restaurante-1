@@ -11,6 +11,7 @@ import static gerenciamento.de.mesas.de.restaurante.gmr.Mesa.estados.LIVRE;
 import static gerenciamento.de.mesas.de.restaurante.gmr.Mesa.estados.OCUPADA;
 import static gerenciamento.de.mesas.de.restaurante.gmr.Mesa.estados.RESERVADA;
 import static gerenciamento.de.mesas.de.restaurante.gmr.Mesa.estados.TEST;
+import visao.MapaMesas;
 
 /**
  *
@@ -219,8 +220,11 @@ public class GerenciamentoDeMesasDeRestauranteGMR {
                     matMesa[i][j] = criarMesa(matMesa, i, j, cont);
                     cont++;
                 }
-        }
-
+        }   
+         MapaMesas mesas = new MapaMesas();
+         mesas.setVisible(true);
+         
+                    
         
         ocuparMesa(matMesa, 1);
         System.out.println("\nEstado da mesa 1: " + matMesa[0][0].estadoAtual);

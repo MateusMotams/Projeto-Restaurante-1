@@ -102,6 +102,11 @@ public class MapaMesas extends javax.swing.JFrame {
         jLabel1.setText("GERENCIAMENTO DE MESAS  DE RESTAURANTE ");
 
         MESA1.setText("MESA 01");
+        MESA1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MESA1ActionPerformed(evt);
+            }
+        });
 
         MESA2.setText("MESA 02");
         MESA2.addActionListener(new java.awt.event.ActionListener() {
@@ -589,6 +594,10 @@ public class MapaMesas extends javax.swing.JFrame {
     private void mesa25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mesa25ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_mesa25ActionPerformed
+
+    private void MESA1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MESA1ActionPerformed
+        
+    }//GEN-LAST:event_MESA1ActionPerformed
 
     /**
      * @param args the command line arguments
