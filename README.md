@@ -46,9 +46,7 @@ public static boolean mesaLivre(Mesa matMesa[][], int linha, int coluna){
 
 ```
 public static void reservarMesa(Mesa matMesa[][], int linha, int coluna){
-    /* caso a mesa esteja livre, então a variável booleana da classe mesa receberá true
-    e seu estado será trocado para RESERVADA */
-
+    
     if(mesaLivre(matMesa, linha, coluna) == true){ 
         matMesa[linha][coluna].setReserva(true);
         matMesa[linha][coluna].setEstadoAtual(RESERVADA);
