@@ -73,15 +73,14 @@ public static void reservarMesa(Mesa matMesa[][], int linha, int coluna){
 - [x] Interface gráfica
 
 # Colaboradores
+Kenedy <a href = "mailto:kenedyr14@alu.ufc.br"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
 
-Kenedy: https://github.com/knd14?tab=repositories
+Raniery Vasconcelos: <a href = "mailto:raniery_vasconcelos@alu.ufc.br"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
 
-Raniery Vasconcelos: raniery_vasconcelos@alu.ufc.br
+Dominique: <a href = "mailto:kossidominique@alu.ufc.br"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
 
-Dominique: kossidominique@alu.ufc.br
+Luan Gomes: <a href = "mailto:luangomes@alu.ufc.br"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
 
-Luan Gomes: luangomes@alu.ufc.br
+Mateus Mota: <a href = "mailto:mateusms@alu.ufc.br"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
 
-Mateus Mota: mateusms@alu.ufc.br
-
-Yara Braga: yrbraga@alu.ufc.br
+Yara Braga: <a href = "mailto:yrbraga@alu.ufc.br"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
