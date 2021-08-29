@@ -25,10 +25,10 @@ Metodologia usada para a criação da aplicação foi prototipagem rápida , que
 
 # Funções
 
-<h3>Algumas funções implementadas na aplicação.</h3>
+<h3 align="center">Algumas funções implementadas na aplicação.</h3>
 
 
-<h3>Chamada da função para verirficar se a mesa está livre .</h3>
+<h4>Chamada da função para verirficar se a mesa está livre .</h4>
 
 
 ```
@@ -41,7 +41,7 @@ public static boolean mesaLivre(Mesa matMesa[][], int linha, int coluna){
 }
 ```
 
-<h3>Chamada da função para a reserva de uma mesa .</h3>
+<h4>Chamada da função para a reserva de uma mesa .</h4>
 
 ```
 public static void reservarMesa(Mesa matMesa[][], int linha, int coluna){
