@@ -5,10 +5,10 @@
 
 
 <p align="center">
-    <a align="#sobre">Sobre </a> *
-    <a align="#funcoes"> Funções </a> *
-    <a align="#features"> Features </a> *
-    <a align="#colaboladores"> Colaboradores </a> *
+    <a href="#sobre">Sobre </a> *
+    <a href="#funções"> Funções </a> *
+    <a href="#features"> Features </a> *
+    <a href="#colaboradores"> Colaboradores </a> *
 </P>
 
 # Sobre
