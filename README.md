@@ -12,7 +12,7 @@
 </P>
 
 <h4 align="center">
-    Projeto em Construção...
+    🚧 Projeto em Construção... 🚧
 </h4>
 
 # Sobre
@@ -57,6 +57,11 @@ public static void reservarMesa(Mesa matMesa[][], int linha, int coluna){
 }
 
 ```
+
+
+
+# Tecnologias
+
 
 # Features
 - [x] Cliente
