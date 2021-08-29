@@ -12,11 +12,11 @@
 </P>
 
 # Sobre
-<h3>
+
 Solução para reserva de mesas no comércio de varejo alimentício.
 
 Metodologia usada para a criação da aplicação foi prototipagem rápida , que é uma coleção de técnicas formais e informais para desenvolvimento ,desmostração e avaliação do design de interfaces de úsuarios , que dá suporte a interações rápidas.
-</h3> 
+ 
 
 
 # Funções
