@@ -6,7 +6,7 @@
 package gerenciamento.de.mesas.de.restaurante.gmr;
 
 import static gerenciamento.de.mesas.de.restaurante.gmr.Mesa.estados.DESINFECTAR;
-import static gerenciamento.de.mesas.de.restaurante.gmr.Mesa.estados.DISTANCIAMENTO_SOCIAL;
+import static gerenciamento.de.mesas.de.restaurante.gmr.Mesa.estados.SEGURANÇA;
 import static gerenciamento.de.mesas.de.restaurante.gmr.Mesa.estados.LIVRE;
 import static gerenciamento.de.mesas.de.restaurante.gmr.Mesa.estados.OCUPADA;
 import static gerenciamento.de.mesas.de.restaurante.gmr.Mesa.estados.RESERVADA;
@@ -63,6 +63,10 @@ public class GerenciamentoDeMesasDeRestauranteGMR {
     public static void desinfectarMesa(Mesa matMesa[][], int linha, int coluna){ 
         if(matMesa[linha][coluna].estadoAtual == DESINFECTAR){
             matMesa[linha][coluna].estadoAtual = LIVRE;
+             matMesa[linha+1][coluna].setEstadoAtual(LIVRE);
+            matMesa[linha][coluna+1].setEstadoAtual(LIVRE);  
+ 
+       
         }
     }
     
@@ -81,12 +85,12 @@ public class GerenciamentoDeMesasDeRestauranteGMR {
             for(i = 0; i < 5; i++){
                  for(j = 0; j < 6; j++){
                      
-                     /* o if abaixo checa se o estado da mesa é diferente de DISTANCIAMENTO_SOCIAL 
+                     /* o if abaixo checa se o estado da mesa é diferente de SEGURANÇA 
                         e o número da mesa fornecido corresponde ao número armazenado na posição da matriz que se quer trocar o estado.
                         Caso seja verdade, o restante do código será executado e cada caso de distanciamento de mesas será tratado.
                         Os casos específos a serem tratados correspodem a primeira e ultima linha e coluna, que são necessários serem
                         executados passos diferentes das mesas do centro para bloquea-las para distanciamento*/ 
-                     if (matMesa[i][j].getEstadoAtual() != DISTANCIAMENTO_SOCIAL && matMesa[i][j].getNumeroMesa() == numeroMesa){
+                     if (matMesa[i][j].getEstadoAtual() != SEGURANÇA && matMesa[i][j].getNumeroMesa() == numeroMesa){
                          
                         switch (j){
                             // caso j = o, ou seja, caso a coluna da matriz de mesas a ser tratada seja a primeira, então os seguintes codigos sao executados
@@ -94,18 +98,18 @@ public class GerenciamentoDeMesasDeRestauranteGMR {
                                 if (matMesa[i][j].getNumeroMesa() == numeroMesa){
                                     // se a mesa for a 1, então apenas as mesas 1 e 2 serão bloqueadas
                                     if (numeroMesa == 1){ 
-                                        matMesa[i][(j + 1)].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa seguinte
-                                        matMesa[i+1][j].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa inferior
+                                        matMesa[i][(j + 1)].setEstadoAtual(SEGURANÇA);//bloquear mesa seguinte
+                                        matMesa[i+1][j].setEstadoAtual(SEGURANÇA);//bloquear mesa inferior
                                     }
                                     // caso o contrário, se a mesa for a 25, então apenas as mesas 19 e 26 serão bloqueadas
                                     else if (numeroMesa == 25){
-                                        matMesa[i-1][j].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa superior
-                                        matMesa[i][j+1].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa seguinte
+                                        matMesa[i-1][j].setEstadoAtual(SEGURANÇA);//bloquear mesa superior
+                                        matMesa[i][j+1].setEstadoAtual(SEGURANÇA);//bloquear mesa seguinte
                                     // se não for nenhum dos casos anteriores da primeira coluna, então 3 mesas serão bloqueadas ao invés de apenas 2 
                                     } else {
-                                        matMesa[i-1][j].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa superior
-                                        matMesa[i][(j + 1)].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa seguinte
-                                        matMesa[(i + 1)][j].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa inferior
+                                        matMesa[i-1][j].setEstadoAtual(SEGURANÇA);//bloquear mesa superior
+                                        matMesa[i][(j + 1)].setEstadoAtual(SEGURANÇA);//bloquear mesa seguinte
+                                        matMesa[(i + 1)][j].setEstadoAtual(SEGURANÇA);//bloquear mesa inferior
                                     }
                                 }
                                 break;
@@ -114,16 +118,16 @@ public class GerenciamentoDeMesasDeRestauranteGMR {
                             case 5:
                                 if (matMesa[i][j].getNumeroMesa() == numeroMesa){
                                     if (numeroMesa == 6){
-                                        matMesa[i][(j - 1)].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa anterior
-                                        matMesa[i+1][j].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa inferior
+                                        matMesa[i][(j - 1)].setEstadoAtual(SEGURANÇA);//bloquear mesa anterior
+                                        matMesa[i+1][j].setEstadoAtual(SEGURANÇA);//bloquear mesa inferior
                                     }
                                     else if (numeroMesa == 30){
-                                        matMesa[i-1][j].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa superior
-                                        matMesa[i][j-1].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa anterior
+                                        matMesa[i-1][j].setEstadoAtual(SEGURANÇA);//bloquear mesa superior
+                                        matMesa[i][j-1].setEstadoAtual(SEGURANÇA);//bloquear mesa anterior
                                     } else {
-                                        matMesa[i-1][j].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa superior
-                                        matMesa[i][(j + 1)].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa seguinte
-                                        matMesa[(i + 1)][j].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa inferior
+                                        matMesa[i-1][j].setEstadoAtual(SEGURANÇA);//bloquear mesa superior
+                                        matMesa[i][(j + 1)].setEstadoAtual(SEGURANÇA);//bloquear mesa seguinte
+                                        matMesa[(i + 1)][j].setEstadoAtual(SEGURANÇA);//bloquear mesa inferior
                                     }
                                 }
                                 break;
@@ -136,17 +140,17 @@ public class GerenciamentoDeMesasDeRestauranteGMR {
                                   as colunas 0 e 5 já foram tratadas) e o número da mesa fornecida esteja em alguma posição da matris, 
                                   então 3 mesas serão bloqueadas*/
                                 if ((j > 0 && j < 5) && matMesa[i][j].getNumeroMesa() == numeroMesa){
-                                    matMesa[i][j-1].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa anterior
-                                    matMesa[i+1][(j)].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa inferior
-                                    matMesa[i][j+1].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa seguinte
+                                    matMesa[i][j-1].setEstadoAtual(SEGURANÇA);//bloquear mesa anterior
+                                    matMesa[i+1][(j)].setEstadoAtual(SEGURANÇA);//bloquear mesa inferior
+                                    matMesa[i][j+1].setEstadoAtual(SEGURANÇA);//bloquear mesa seguinte
                                 }
                                 break;
                                 // o mesmo acontece com a linha 4, com a diferença das posições das mesas
                             case 4:
                                 if ((j > 0 && j < 5) && matMesa[i][j].getNumeroMesa() == numeroMesa){
-                                    matMesa[i][j-1].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa anterior
-                                    matMesa[i-1][j].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa superior
-                                    matMesa[i][j+1].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa seguinte
+                                    matMesa[i][j-1].setEstadoAtual(SEGURANÇA);//bloquear mesa anterior
+                                    matMesa[i-1][j].setEstadoAtual(SEGURANÇA);//bloquear mesa superior
+                                    matMesa[i][j+1].setEstadoAtual(SEGURANÇA);//bloquear mesa seguinte
                                 }
                                 break;
                         }
@@ -156,10 +160,10 @@ public class GerenciamentoDeMesasDeRestauranteGMR {
                           Se isso for verdade e o número da mesa fornecido corresponder ao numero de alguma mesa na matriz,
                           as mesas correspondetes ao redor da mesa ocupada serão bloqueadas para distanciamento*/
                         if((j != 0 && j != 5) && (i != 0 && i != 4) && matMesa[i][j].getNumeroMesa() == numeroMesa){
-                            matMesa[i][(j - 1)].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa anterior
-                            matMesa[i][(j + 1)].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa seguinte
-                            matMesa[(i + 1)][j].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa inferior
-                            matMesa[(i - 1)][j].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa superior
+                            matMesa[i][(j - 1)].setEstadoAtual(SEGURANÇA);//bloquear mesa anterior
+                            matMesa[i][(j + 1)].setEstadoAtual(SEGURANÇA);//bloquear mesa seguinte
+                            matMesa[(i + 1)][j].setEstadoAtual(SEGURANÇA);//bloquear mesa inferior
+                            matMesa[(i - 1)][j].setEstadoAtual(SEGURANÇA);//bloquear mesa superior
                         }
                     }
                 }
@@ -198,7 +202,7 @@ public class GerenciamentoDeMesasDeRestauranteGMR {
                             distanciamentoMesa(matMesa, numeroMesa);
                         // caso não seja nenhuma das opções anteriores, entao uma msg de erro sera mostrada e a mesa não podera ser ocupada
                         } else {
-                            System.out.println("\nErro: A mesa solicitada não pode ser ocupada no momento! Por favor, verique se ela não está OCUPADA, RESERVADA, bloqueada por DISTANCIAMENTO_SOCIAL ou se é para DESINFECTAR.");
+                            System.out.println("\nErro: A mesa solicitada não pode ser ocupada no momento! Por favor, verique se ela não está OCUPADA, RESERVADA, bloqueada por SEGURANÇA ou se é para DESINFECTAR.");
                         }
                     }
                 }

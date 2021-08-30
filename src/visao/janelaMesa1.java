@@ -7,7 +7,7 @@ package visao;
 
 import gerenciamento.de.mesas.de.restaurante.gmr.Mesa;
 import static gerenciamento.de.mesas.de.restaurante.gmr.Mesa.estados.DESINFECTAR;
-import static gerenciamento.de.mesas.de.restaurante.gmr.Mesa.estados.DISTANCIAMENTO_SOCIAL;
+import static gerenciamento.de.mesas.de.restaurante.gmr.Mesa.estados.SEGURANÇA;
 import static gerenciamento.de.mesas.de.restaurante.gmr.Mesa.estados.LIVRE;
 import static gerenciamento.de.mesas.de.restaurante.gmr.Mesa.estados.OCUPADA;
 import static gerenciamento.de.mesas.de.restaurante.gmr.Mesa.estados.RESERVADA;
@@ -18,16 +18,17 @@ import javax.swing.JOptionPane;
  * @author ranie
  */
 public class janelaMesa1 extends javax.swing.JFrame {
-
+    int linha, coluna;
     public Mesa[][] vetMesa;
     /*
     public static Mesa.estados OCUPADA;
-    public static Mesa.estados DISTANCIAMENTO_SOCIAL;
+    public static Mesa.estados SEGURANÇA;
     public static Mesa.estados DESINFECTAR;
     public static Mesa.estados LIVRE;
     public static Mesa.estados RESERVADA;
   */  
     // Função que retorna true se a mesa estiver livre e false se não estiver
+    
     public static boolean mesaLivre(Mesa matMesa[][], int linha, int coluna){
         if(matMesa[linha][coluna].estadoAtual == LIVRE && matMesa[linha][coluna].isReserva()== false){
             return true;
@@ -39,7 +40,7 @@ public class janelaMesa1 extends javax.swing.JFrame {
     // Função para libeberar uma mesa caso seu estado seja DESINFECTAR
     public static void liberarMesa(Mesa matMesa[][], int linha, int coluna){
         if(matMesa[linha][coluna].estadoAtual == DESINFECTAR){
-            desinfectarMesa(matMesa, linha, coluna);
+            desinfectarMesa(matMesa, linha, coluna, matMesa[linha][coluna].getNumeroMesa());
         }
     }
     
@@ -68,11 +69,135 @@ public class janelaMesa1 extends javax.swing.JFrame {
     }
     
     // Função que troca o estado de uma mesa para LIVRE caso ela esteja eticada como DESINFECTAR
-    public static void desinfectarMesa(Mesa matMesa[][], int linha, int coluna){ 
-        if(matMesa[linha][coluna].estadoAtual == DESINFECTAR){
-            matMesa[linha][coluna].estadoAtual = LIVRE;
+    public static void desinfectarMesa(Mesa matMesa[][], int i, int j, int numeroMesa){ 
+
+        if(matMesa[i][j].estadoAtual == DESINFECTAR){
+            matMesa[i][j].estadoAtual = LIVRE;
+            
+            for(i = 0; i < 5; i++){
+                 for(j = 0; j < 6; j++){
+                        switch (j){
+                            // caso j = o, ou seja, caso a coluna da matriz de mesas a ser tratada seja a primeira, então os seguintes codigos sao executados
+                            case 0:
+                                if (matMesa[i][j].getNumeroMesa() == numeroMesa){
+                                    if (numeroMesa == 1 && matMesa[i][j+2].getEstadoAtual() != OCUPADA && matMesa[i+1][j+1].getEstadoAtual() != OCUPADA && matMesa[i+2][j].getEstadoAtual() != OCUPADA){ 
+                                        matMesa[i][(j + 1)].setEstadoAtual(LIVRE);//bloquear mesa seguinte
+                                        matMesa[i+1][j].setEstadoAtual(LIVRE);//bloquear mesa inferior
+                                    }
+                                    if (numeroMesa == 25 && matMesa[i-1][j+1].getEstadoAtual() != OCUPADA && matMesa[i-2][j].getEstadoAtual() != OCUPADA){
+                                        matMesa[i-1][j].setEstadoAtual(LIVRE);//bloquear mesa superior
+                                        matMesa[i][j+1].setEstadoAtual(LIVRE);
+                                    }
+                                    if (numeroMesa == 7 && matMesa[i-1][j+1].getEstadoAtual() != OCUPADA && matMesa[i][j+2].getEstadoAtual() != OCUPADA && matMesa[i+1][j+1].getEstadoAtual() != OCUPADA && matMesa[i+2][j].getEstadoAtual() != OCUPADA){
+                                            matMesa[i-1][j].setEstadoAtual(LIVRE);
+                                            matMesa[i][(j + 1)].setEstadoAtual(LIVRE);
+                                            matMesa[(i + 1)][j].setEstadoAtual(LIVRE);
+                                    }
+                                    if (numeroMesa == 19 && matMesa[i+1][j+1].getEstadoAtual() != OCUPADA && matMesa[i][j+2].getEstadoAtual() != OCUPADA && matMesa[i-1][j+1].getEstadoAtual() != OCUPADA && matMesa[i-2][j].getEstadoAtual() != OCUPADA){ 
+                                            matMesa[i+1][j].setEstadoAtual(LIVRE);
+                                            matMesa[i][j + 1].setEstadoAtual(LIVRE);
+                                            matMesa[i-1][j].setEstadoAtual(LIVRE);
+                                    } 
+                                    if (numeroMesa == 13 && matMesa[i-2][j].getEstadoAtual() != OCUPADA && matMesa[i-1][j+1].getEstadoAtual() != OCUPADA && matMesa[i][j+2].getEstadoAtual() != OCUPADA && matMesa[i+1][j+1].getEstadoAtual() != OCUPADA && matMesa[i+2][j].getEstadoAtual() != OCUPADA){
+                                            matMesa[i-1][j].setEstadoAtual(LIVRE);
+                                            matMesa[i][(j + 1)].setEstadoAtual(LIVRE);
+                                            matMesa[(i + 1)][j].setEstadoAtual(LIVRE);
+                                    }
+                                 }
+                                 break;
+         
+                                
+                            case 5:
+                                if (matMesa[i][j].getNumeroMesa() == numeroMesa){    
+                                    if (numeroMesa == 6 && matMesa[i][j-2].getEstadoAtual() != OCUPADA && matMesa[i+1][j-1].getEstadoAtual() != OCUPADA && matMesa[i+2][j].getEstadoAtual() != OCUPADA){ 
+                                        matMesa[i][j-1].setEstadoAtual(LIVRE);//bloquear mesa seguinte
+                                        matMesa[i+1][j].setEstadoAtual(LIVRE);//bloquear mesa inferior
+                                    }
+                                    if (numeroMesa == 12 && matMesa[i-1][j-1].getEstadoAtual() != OCUPADA && matMesa[i][j-2].getEstadoAtual() != OCUPADA && matMesa[i+1][j-1].getEstadoAtual() != OCUPADA && matMesa[i+2][j].getEstadoAtual() != OCUPADA){
+                                            matMesa[i-1][j].setEstadoAtual(LIVRE);
+                                            matMesa[i][j-1].setEstadoAtual(LIVRE);
+                                            matMesa[i+1][j].setEstadoAtual(LIVRE);
+                                    } 
+                                    if (numeroMesa == 18 && matMesa[i-2][j].getEstadoAtual() != OCUPADA && matMesa[i-1][j-1].getEstadoAtual() != OCUPADA && matMesa[i][j-2].getEstadoAtual() != OCUPADA && matMesa[i+1][j-1].getEstadoAtual() != OCUPADA && matMesa[i+2][j].getEstadoAtual() != OCUPADA){
+                                            matMesa[i-1][j].setEstadoAtual(LIVRE);
+                                            matMesa[i][j-1].setEstadoAtual(LIVRE);
+                                            matMesa[i+1][j].setEstadoAtual(LIVRE);
+                                    }
+                                    if (numeroMesa == 24 && matMesa[i-2][j].getEstadoAtual() != OCUPADA && matMesa[i-1][j-1].getEstadoAtual() != OCUPADA && matMesa[i][j-2].getEstadoAtual() != OCUPADA && matMesa[i+1][j-1].getEstadoAtual() != OCUPADA){ 
+                                            matMesa[i-1][j].setEstadoAtual(LIVRE);
+                                            matMesa[i][j-1].setEstadoAtual(LIVRE);
+                                            matMesa[i+1][j].setEstadoAtual(LIVRE);
+                                    }
+                                    if (numeroMesa == 30 && matMesa[i][j-2].getEstadoAtual() != OCUPADA && matMesa[i-1][j-1].getEstadoAtual() != OCUPADA && matMesa[i-2][j].getEstadoAtual() != OCUPADA){
+                                        matMesa[i][j-1].setEstadoAtual(LIVRE);//bloquear mesa superior
+                                        matMesa[i-1][j].setEstadoAtual(LIVRE);
+                                    }
+                                }
+                                break;
+                            }
+                        
+                        /*Assim como foram tratados os casos das colunas 0 e 5, será tratado os casos correspondentes das linhas 0 e 5 */
+                        switch (i){
+                            case 0:
+                                if ((j > 0 && j < 5) && matMesa[i][j].getNumeroMesa() == numeroMesa){
+                                    if (numeroMesa == 2 && matMesa[i+1][j-1].getEstadoAtual() != OCUPADA && matMesa[i+2][j].getEstadoAtual() != OCUPADA && matMesa[i+1][j+1].getEstadoAtual() != OCUPADA && matMesa[i][j+2].getEstadoAtual() != OCUPADA){
+                                        matMesa[i][j-1].setEstadoAtual(LIVRE);
+                                        matMesa[i+1][(j)].setEstadoAtual(LIVRE);
+                                        matMesa[i][j+1].setEstadoAtual(LIVRE);
+                                    } else if (numeroMesa == 5 && matMesa[i][j-2].getEstadoAtual() != OCUPADA && matMesa[i+1][j-1].getEstadoAtual() != OCUPADA && matMesa[i+2][j].getEstadoAtual() != OCUPADA && matMesa[i+1][j+1].getEstadoAtual() != OCUPADA){
+                                        matMesa[i][j-1].setEstadoAtual(LIVRE);
+                                        matMesa[i+1][(j)].setEstadoAtual(LIVRE);
+                                        matMesa[i][j+1].setEstadoAtual(LIVRE);
+                                    } else {
+                                        if (matMesa[i][j-2].getEstadoAtual() != OCUPADA && matMesa[i+1][j-1].getEstadoAtual() != OCUPADA && matMesa[i+2][j].getEstadoAtual() != OCUPADA && matMesa[i+1][j+1].getEstadoAtual() != OCUPADA && matMesa[i][j+2].getEstadoAtual() != OCUPADA){
+                                            matMesa[i][j-1].setEstadoAtual(LIVRE);
+                                            matMesa[i+1][(j)].setEstadoAtual(LIVRE);
+                                            matMesa[i][j+1].setEstadoAtual(LIVRE);
+                                        }
+                                    }
+                                }
+                                break;
+                                // o mesmo acontece com a linha 4, com a diferença das posições das mesas
+                            case 4:
+                                if ((j > 0 && j < 5) && matMesa[i][j].getNumeroMesa() == numeroMesa){
+                                    if (numeroMesa == 26 && matMesa[i-1][j-1].getEstadoAtual() != OCUPADA && matMesa[i-2][j].getEstadoAtual() != OCUPADA && matMesa[i-1][j+1].getEstadoAtual() != OCUPADA && matMesa[i][j+2].getEstadoAtual() != OCUPADA){
+                                        matMesa[i][j-1].setEstadoAtual(LIVRE);
+                                        matMesa[i-1][j].setEstadoAtual(LIVRE);
+                                        matMesa[i][j+1].setEstadoAtual(LIVRE);
+                                    } else if (numeroMesa == 29 && matMesa[i][j-2].getEstadoAtual() != OCUPADA && matMesa[i-1][j-1].getEstadoAtual() != OCUPADA && matMesa[i-2][j].getEstadoAtual() != OCUPADA && matMesa[i-1][j+1].getEstadoAtual() != OCUPADA){
+                                        matMesa[i][j-1].setEstadoAtual(LIVRE);
+                                        matMesa[i-1][(j)].setEstadoAtual(LIVRE);
+                                        matMesa[i][j+1].setEstadoAtual(LIVRE);
+                                    } else {
+                                        if (matMesa[i][j-2].getEstadoAtual() != OCUPADA && matMesa[i-1][j-1].getEstadoAtual() != OCUPADA && matMesa[i-2][j].getEstadoAtual() != OCUPADA && matMesa[i-1][j+1].getEstadoAtual() != OCUPADA && matMesa[i][j+2].getEstadoAtual() != OCUPADA){
+                                            matMesa[i][j-1].setEstadoAtual(LIVRE);
+                                            matMesa[i-1][(j)].setEstadoAtual(LIVRE);
+                                            matMesa[i][j+1].setEstadoAtual(LIVRE);
+                                        }
+                                    }
+                                }
+                                break;
+                        }
+                        
+                        /*No entanto, caso não se trate das colunas 0 e 5 e das linhas 0 e 4, então se trata das mesas centrais em que 
+                          será necessario bloquear 4 mesas ao inves de apenas 2 ou 3 como nos casos anteriores.
+                          Se isso for verdade e o número da mesa fornecido corresponder ao numero de alguma mesa na matriz,
+                          as mesas correspondetes ao redor da mesa ocupada serão bloqueadas para distanciamento*/
+                        if((j != 0 && j != 5) && (i != 0 && i != 4) && matMesa[i][j].getNumeroMesa() == numeroMesa){
+                            if (matMesa[i-1][j-1].getEstadoAtual() != OCUPADA && matMesa[i-1][j+1].getEstadoAtual() != OCUPADA && matMesa[i+1][j-1].getEstadoAtual() != OCUPADA && matMesa[i+1][j+1].getEstadoAtual() != OCUPADA){
+                                matMesa[i-1][j].setEstadoAtual(LIVRE);//bloquear mesa anterior
+                                matMesa[i][j-1].setEstadoAtual(LIVRE);//bloquear mesa seguinte
+                                matMesa[i+1][j].setEstadoAtual(LIVRE);//bloquear mesa inferior
+                                matMesa[i][j+1].setEstadoAtual(LIVRE);//bloquear mesa superior
+                            }
+                           
+                        }
+                    }
+                }
         }
+        
     }
+
     
     // Função que desocupa uma mesa caso seu estado seja OCUPADA, trocando seu estado para DESINFECTAR
     public static void desocuparMesa(Mesa matMesa[][], int linha, int coluna){ 
@@ -89,12 +214,12 @@ public class janelaMesa1 extends javax.swing.JFrame {
             for(i = 0; i < 5; i++){
                  for(j = 0; j < 6; j++){
                      
-                     /* o if abaixo checa se o estado da mesa é diferente de DISTANCIAMENTO_SOCIAL 
+                     /* o if abaixo checa se o estado da mesa é diferente de SEGURANÇA 
                         e o número da mesa fornecido corresponde ao número armazenado na posição da matriz que se quer trocar o estado.
                         Caso seja verdade, o restante do código será executado e cada caso de distanciamento de mesas será tratado.
                         Os casos específos a serem tratados correspodem a primeira e ultima linha e coluna, que são necessários serem
                         executados passos diferentes das mesas do centro para bloquea-las para distanciamento*/ 
-                     if (matMesa[i][j].getEstadoAtual() != DISTANCIAMENTO_SOCIAL && matMesa[i][j].getNumeroMesa() == numeroMesa){
+                     if (matMesa[i][j].getEstadoAtual() != SEGURANÇA && matMesa[i][j].getNumeroMesa() == numeroMesa){
                          
                         switch (j){
                             // caso j = o, ou seja, caso a coluna da matriz de mesas a ser tratada seja a primeira, então os seguintes codigos sao executados
@@ -102,18 +227,18 @@ public class janelaMesa1 extends javax.swing.JFrame {
                                 if (matMesa[i][j].getNumeroMesa() == numeroMesa){
                                     // se a mesa for a 1, então apenas as mesas 1 e 2 serão bloqueadas
                                     if (numeroMesa == 1){ 
-                                        matMesa[i][(j + 1)].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa seguinte
-                                        matMesa[i+1][j].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa inferior
+                                        matMesa[i][(j + 1)].setEstadoAtual(SEGURANÇA);//bloquear mesa seguinte
+                                        matMesa[i+1][j].setEstadoAtual(SEGURANÇA);//bloquear mesa inferior
                                     }
                                     // caso o contrário, se a mesa for a 25, então apenas as mesas 19 e 26 serão bloqueadas
                                     else if (numeroMesa == 25){
-                                        matMesa[i-1][j].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa superior
-                                        matMesa[i][j+1].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa seguinte
+                                        matMesa[i-1][j].setEstadoAtual(SEGURANÇA);//bloquear mesa superior
+                                        matMesa[i][j+1].setEstadoAtual(SEGURANÇA);//bloquear mesa seguinte
                                     // se não for nenhum dos casos anteriores da primeira coluna, então 3 mesas serão bloqueadas ao invés de apenas 2 
                                     } else {
-                                        matMesa[i-1][j].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa superior
-                                        matMesa[i][(j + 1)].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa seguinte
-                                        matMesa[(i + 1)][j].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa inferior
+                                        matMesa[i-1][j].setEstadoAtual(SEGURANÇA);//bloquear mesa superior
+                                        matMesa[i][(j + 1)].setEstadoAtual(SEGURANÇA);//bloquear mesa seguinte
+                                        matMesa[(i + 1)][j].setEstadoAtual(SEGURANÇA);//bloquear mesa inferior
                                     }
                                 }
                                 break;
@@ -122,16 +247,16 @@ public class janelaMesa1 extends javax.swing.JFrame {
                             case 5:
                                 if (matMesa[i][j].getNumeroMesa() == numeroMesa){
                                     if (numeroMesa == 6){
-                                        matMesa[i][(j - 1)].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa anterior
-                                        matMesa[i+1][j].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa inferior
+                                        matMesa[i][(j - 1)].setEstadoAtual(SEGURANÇA);//bloquear mesa anterior
+                                        matMesa[i+1][j].setEstadoAtual(SEGURANÇA);//bloquear mesa inferior
                                     }
                                     else if (numeroMesa == 30){
-                                        matMesa[i-1][j].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa superior
-                                        matMesa[i][j-1].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa anterior
+                                        matMesa[i-1][j].setEstadoAtual(SEGURANÇA);//bloquear mesa superior
+                                        matMesa[i][j-1].setEstadoAtual(SEGURANÇA);//bloquear mesa anterior
                                     } else {
-                                        matMesa[i-1][j].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa superior
-                                        matMesa[i][(j + 1)].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa seguinte
-                                        matMesa[(i + 1)][j].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa inferior
+                                        matMesa[i-1][j].setEstadoAtual(SEGURANÇA);//bloquear mesa superior
+                                        matMesa[i][j-1].setEstadoAtual(SEGURANÇA);//bloquear mesa seguinte
+                                        matMesa[i+1][j].setEstadoAtual(SEGURANÇA);//bloquear mesa inferior
                                     }
                                 }
                                 break;
@@ -144,17 +269,17 @@ public class janelaMesa1 extends javax.swing.JFrame {
                                   as colunas 0 e 5 já foram tratadas) e o número da mesa fornecida esteja em alguma posição da matris, 
                                   então 3 mesas serão bloqueadas*/
                                 if ((j > 0 && j < 5) && matMesa[i][j].getNumeroMesa() == numeroMesa){
-                                    matMesa[i][j-1].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa anterior
-                                    matMesa[i+1][(j)].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa inferior
-                                    matMesa[i][j+1].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa seguinte
+                                    matMesa[i][j-1].setEstadoAtual(SEGURANÇA);//bloquear mesa anterior
+                                    matMesa[i+1][(j)].setEstadoAtual(SEGURANÇA);//bloquear mesa inferior
+                                    matMesa[i][j+1].setEstadoAtual(SEGURANÇA);//bloquear mesa seguinte
                                 }
                                 break;
                                 // o mesmo acontece com a linha 4, com a diferença das posições das mesas
                             case 4:
                                 if ((j > 0 && j < 5) && matMesa[i][j].getNumeroMesa() == numeroMesa){
-                                    matMesa[i][j-1].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa anterior
-                                    matMesa[i-1][j].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa superior
-                                    matMesa[i][j+1].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa seguinte
+                                    matMesa[i][j-1].setEstadoAtual(SEGURANÇA);//bloquear mesa anterior
+                                    matMesa[i-1][j].setEstadoAtual(SEGURANÇA);//bloquear mesa superior
+                                    matMesa[i][j+1].setEstadoAtual(SEGURANÇA);//bloquear mesa seguinte
                                 }
                                 break;
                         }
@@ -164,10 +289,10 @@ public class janelaMesa1 extends javax.swing.JFrame {
                           Se isso for verdade e o número da mesa fornecido corresponder ao numero de alguma mesa na matriz,
                           as mesas correspondetes ao redor da mesa ocupada serão bloqueadas para distanciamento*/
                         if((j != 0 && j != 5) && (i != 0 && i != 4) && matMesa[i][j].getNumeroMesa() == numeroMesa){
-                            matMesa[i][(j - 1)].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa anterior
-                            matMesa[i][(j + 1)].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa seguinte
-                            matMesa[(i + 1)][j].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa inferior
-                            matMesa[(i - 1)][j].setEstadoAtual(DISTANCIAMENTO_SOCIAL);//bloquear mesa superior
+                            matMesa[i][(j - 1)].setEstadoAtual(SEGURANÇA);//bloquear mesa anterior
+                            matMesa[i][(j + 1)].setEstadoAtual(SEGURANÇA);//bloquear mesa seguinte
+                            matMesa[(i + 1)][j].setEstadoAtual(SEGURANÇA);//bloquear mesa inferior
+                            matMesa[(i - 1)][j].setEstadoAtual(SEGURANÇA);//bloquear mesa superior
                         }
                     }
                 }
@@ -206,7 +331,7 @@ public class janelaMesa1 extends javax.swing.JFrame {
                             distanciamentoMesa(matMesa, numeroMesa);
                         // caso não seja nenhuma das opções anteriores, entao uma msg de erro sera mostrada e a mesa não podera ser ocupada
                         } else {
-                            System.out.println("\nErro: A mesa solicitada não pode ser ocupada no momento! Por favor, verique se ela não está OCUPADA, RESERVADA, bloqueada por DISTANCIAMENTO_SOCIAL ou se é para DESINFECTAR.");
+                            System.out.println("\nErro: A mesa solicitada não pode ser ocupada no momento! Por favor, verique se ela não está OCUPADA, RESERVADA, bloqueada por SEGURANÇA ou se é para DESINFECTAR.");
                         }
                     }
                 }
@@ -221,9 +346,10 @@ public class janelaMesa1 extends javax.swing.JFrame {
     /**
      * Creates new form janelaMesa1
      */
-    public janelaMesa1(Mesa matMesa[][]) {
+    public janelaMesa1(Mesa matMesa[][], int i, int j) {
         initComponents();
         this.vetMesa = matMesa;
+        jLabel1.setText("Mesa " + this.vetMesa[i][j].getNumeroMesa());
     }
 
     private janelaMesa1() {
@@ -361,7 +487,7 @@ public class janelaMesa1 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVerEstadoAtualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerEstadoAtualActionPerformed
-        JOptionPane.showMessageDialog(null, "O estado atual da Mesa " + this.vetMesa[0][0].getNumeroMesa() + " é: " + this.vetMesa[0][0].getEstadoAtual());
+        JOptionPane.showMessageDialog(null, "O estado atual da Mesa " + this.vetMesa[linha][coluna].getNumeroMesa() + " é: " + this.vetMesa[linha][coluna].getEstadoAtual());
     }//GEN-LAST:event_btnVerEstadoAtualActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
@@ -372,30 +498,30 @@ public class janelaMesa1 extends javax.swing.JFrame {
 
     private void btnOcuparMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOcuparMesaActionPerformed
         //ocuparMesa(this.matMesa, this.matMesa[0][0].getNumeroMesa());
-        this.vetMesa[0][0].setEstadoAtual(OCUPADA);
-        this.vetMesa[0][0] = vetMesa[0][0];
-        distanciamentoMesa(this.vetMesa, this.vetMesa[0][0].getNumeroMesa());
+        this.vetMesa[linha][coluna].setEstadoAtual(OCUPADA);
+        this.vetMesa[linha][coluna] = vetMesa[linha][coluna];
+        distanciamentoMesa(this.vetMesa, this.vetMesa[linha][coluna].getNumeroMesa());
         
-        JOptionPane.showMessageDialog(null, "A Mesa " + this.vetMesa[0][0].getNumeroMesa() + " foi " + this.vetMesa[0][0].getEstadoAtual() + " com sucesso!");
+        JOptionPane.showMessageDialog(null, "A Mesa " + this.vetMesa[linha][coluna].getNumeroMesa() + " foi " + this.vetMesa[linha][coluna].getEstadoAtual() + " com sucesso!");
     }//GEN-LAST:event_btnOcuparMesaActionPerformed
 
     private void btnDesinfectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesinfectarActionPerformed
-        desinfectarMesa(this.vetMesa, 0, 0);
-        if(this.vetMesa[0][0].getEstadoAtual() == LIVRE){
-            JOptionPane.showMessageDialog(null, "A Mesa " + this.vetMesa[0][0].getNumeroMesa() + " foi desinfectada com sucesso!");
+        desinfectarMesa(this.vetMesa, linha, coluna, vetMesa[linha][coluna].getNumeroMesa());
+        if(this.vetMesa[linha][coluna].getEstadoAtual() == LIVRE){
+            JOptionPane.showMessageDialog(null, "A Mesa " + this.vetMesa[linha][coluna].getNumeroMesa() + " foi desinfectada com sucesso!");
         }
         
     }//GEN-LAST:event_btnDesinfectarActionPerformed
 
     private void btnDesocuparMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesocuparMesaActionPerformed
-        desocuparMesa(vetMesa, 0, 0);
-        JOptionPane.showMessageDialog(null, "A Mesa " + this.vetMesa[0][0].getNumeroMesa() + " foi desocupada com sucesso! Ela deve ser desinfectada!");
+        desocuparMesa(vetMesa, linha, coluna);
+        JOptionPane.showMessageDialog(null, "A Mesa " + this.vetMesa[linha][coluna].getNumeroMesa() + " foi desocupada com sucesso! Ela deve ser desinfectada!");
     }//GEN-LAST:event_btnDesocuparMesaActionPerformed
 
     private void btnReservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReservarActionPerformed
-        reservarMesa(vetMesa, 0, 0);
-        if(this.vetMesa[0][0].getEstadoAtual() == RESERVADA){
-            JOptionPane.showMessageDialog(null, "A Mesa " + this.vetMesa[0][0].getNumeroMesa() + " foi reservada com sucesso!");
+        reservarMesa(vetMesa, linha, coluna);
+        if(this.vetMesa[linha][coluna].getEstadoAtual() == RESERVADA){
+            JOptionPane.showMessageDialog(null, "A Mesa " + this.vetMesa[linha][coluna].getNumeroMesa() + " foi reservada com sucesso!");
         }
     }//GEN-LAST:event_btnReservarActionPerformed
 
@@ -451,4 +577,5 @@ public class janelaMesa1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
+
 }
