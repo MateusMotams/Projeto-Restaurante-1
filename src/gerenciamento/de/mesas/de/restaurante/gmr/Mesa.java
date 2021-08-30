@@ -15,7 +15,7 @@ import static gerenciamento.de.mesas.de.restaurante.gmr.Mesa.estados.TEST;
 public class Mesa {
 
     
-    enum estados {LIVRE, OCUPADA, DESINFECTAR, RESERVADA, DISTANCIAMENTO_SOCIAL, TEST};
+    public enum estados {LIVRE, OCUPADA, DESINFECTAR, RESERVADA, DISTANCIAMENTO_SOCIAL, TEST};
     public estados estadoAtual = LIVRE;
     public int numeroMesa;
     public int numeroCadeiras = 4;
