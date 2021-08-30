@@ -7,7 +7,8 @@ package visao;
 
 
 import gerenciamento.de.mesas.de.restaurante.gmr.Mesa;
-import gerenciamento.de.mesas.de.restaurante.gmr.janelas.janelaSecundaria;
+import static gerenciamento.de.mesas.de.restaurante.gmr.Mesa.estados.DISTANCIAMENTO_SOCIAL;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -30,6 +31,8 @@ public class MapaMesas extends javax.swing.JFrame {
     private MapaMesas() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -91,7 +94,7 @@ public class MapaMesas extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
         mesa25 = new javax.swing.JButton();
         mesa26 = new javax.swing.JButton();
         mesa27 = new javax.swing.JButton();
@@ -112,7 +115,8 @@ public class MapaMesas extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 102, 102));
 
-        jLabel1.setText("GERENCIAMENTO DE MESAS  DE RESTAURANTE ");
+        jLabel1.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        jLabel1.setText("GERENCIAMENTO DE MESAS DE RESTAURANTE (GMR) ");
 
         MESA1.setText("MESA 01");
         MESA1.addActionListener(new java.awt.event.ActionListener() {
@@ -248,9 +252,10 @@ public class MapaMesas extends javax.swing.JFrame {
 
         jLabel24.setText("estado24");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.setText("Estado");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -286,26 +291,19 @@ public class MapaMesas extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel18)
                 .addGap(38, 38, 38))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(185, 185, 185))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(MESA7)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(MESA1)
+                            .addComponent(mesa13)
+                            .addComponent(mesa19)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(5, 5, 5)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(MESA1)
-                                .addComponent(mesa13)
-                                .addComponent(mesa19)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(12, 12, 12)
-                                    .addComponent(jLabel19))))
+                                .addGap(12, 12, 12)
+                                .addComponent(jLabel19))
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
@@ -384,6 +382,10 @@ public class MapaMesas extends javax.swing.JFrame {
                                 .addComponent(jLabel6)
                                 .addGap(9, 9, 9)))))
                 .addContainerGap(37, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(156, 156, 156)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -412,7 +414,7 @@ public class MapaMesas extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButton2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(MESA7)
@@ -573,7 +575,7 @@ public class MapaMesas extends javax.swing.JFrame {
                     .addComponent(jLabel28)
                     .addComponent(jLabel29)
                     .addComponent(jLabel30))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         setSize(new java.awt.Dimension(660, 505));
@@ -601,7 +603,9 @@ public class MapaMesas extends javax.swing.JFrame {
     }//GEN-LAST:event_mesa22ActionPerformed
 
     private void MESA2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MESA2ActionPerformed
-        // TODO add your handling code here:
+        if(matMesa[0][1].getEstadoAtual() == DISTANCIAMENTO_SOCIAL){
+            JOptionPane.showMessageDialog(null, "Aviso: A mesa " + this.matMesa[0][1].getNumeroMesa() + " está bloqueada por " + this.matMesa[0][1].getEstadoAtual());
+        }
     }//GEN-LAST:event_MESA2ActionPerformed
 
     private void mesa19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mesa19ActionPerformed
@@ -622,14 +626,14 @@ public class MapaMesas extends javax.swing.JFrame {
 
     private void MESA1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MESA1ActionPerformed
         
-        janelaSecundaria jMesa1 = new janelaSecundaria(this.matMesa);
+        janelaMesa1 jMesa1 = new janelaMesa1(this.matMesa);
         jMesa1.setVisible(true);
         dispose();
     }//GEN-LAST:event_MESA1ActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        System.out.println(matMesa[0][0].getEstadoAtual());
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        JOptionPane.showMessageDialog(null, "O estado atual da Mesa " + this.matMesa[0][0].getNumeroMesa() + " é: " + this.matMesa[0][0].getEstadoAtual());
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -675,6 +679,7 @@ public class MapaMesas extends javax.swing.JFrame {
     private javax.swing.JButton MESA5;
     private javax.swing.JButton MESA6;
     private javax.swing.JButton MESA7;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -708,7 +713,6 @@ public class MapaMesas extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JButton mesa10;
     private javax.swing.JButton mesa11;
     private javax.swing.JButton mesa12;
