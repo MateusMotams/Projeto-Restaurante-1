@@ -296,13 +296,15 @@
                               <Component id="label15" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="mesa19" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="mesa20" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="mesa21" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="mesa22" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="mesa24" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="mesa23" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="mesa19" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="mesa20" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="mesa21" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="mesa24" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="mesa23" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                       <Component id="label18" alignment="0" min="-2" max="-2" attributes="0"/>
