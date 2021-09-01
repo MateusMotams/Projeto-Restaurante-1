@@ -68,7 +68,8 @@ public class janelaMesa1 extends javax.swing.JFrame {
         return matMesa[linha][coluna]; // retorna uma mesa com as especificações acima
     }
     
-    // Função que troca o estado de uma mesa para LIVRE caso ela esteja eticada como DESINFECTAR
+    /* Função que troca o estado de uma mesa para LIVRE caso ela esteja eticada como DESINFECTAR e permite liberar uma mesa que esteja bloqueada por SEGURANÇA para 
+       LIVRE caso seja possível */
     public static void desinfectarMesa(Mesa matMesa[][], int i, int j, int numeroMesa){ 
 
         if(matMesa[i][j].estadoAtual == DESINFECTAR){
@@ -77,120 +78,236 @@ public class janelaMesa1 extends javax.swing.JFrame {
             for(i = 0; i < 5; i++){
                  for(j = 0; j < 6; j++){
                         switch (j){
-                            // caso j = o, ou seja, caso a coluna da matriz de mesas a ser tratada seja a primeira, então os seguintes codigos sao executados
                             case 0:
                                 if (matMesa[i][j].getNumeroMesa() == numeroMesa){
-                                    if (numeroMesa == 1 && matMesa[i][j+2].getEstadoAtual() != OCUPADA && matMesa[i+1][j+1].getEstadoAtual() != OCUPADA && matMesa[i+2][j].getEstadoAtual() != OCUPADA){ 
-                                        matMesa[i][(j + 1)].setEstadoAtual(LIVRE);//bloquear mesa seguinte
-                                        matMesa[i+1][j].setEstadoAtual(LIVRE);//bloquear mesa inferior
-                                    }
-                                    if (numeroMesa == 25 && matMesa[i-1][j+1].getEstadoAtual() != OCUPADA && matMesa[i-2][j].getEstadoAtual() != OCUPADA){
-                                        matMesa[i-1][j].setEstadoAtual(LIVRE);//bloquear mesa superior
-                                        matMesa[i][j+1].setEstadoAtual(LIVRE);
-                                    }
-                                    if (numeroMesa == 7 && matMesa[i-1][j+1].getEstadoAtual() != OCUPADA && matMesa[i][j+2].getEstadoAtual() != OCUPADA && matMesa[i+1][j+1].getEstadoAtual() != OCUPADA && matMesa[i+2][j].getEstadoAtual() != OCUPADA){
-                                            matMesa[i-1][j].setEstadoAtual(LIVRE);
-                                            matMesa[i][(j + 1)].setEstadoAtual(LIVRE);
-                                            matMesa[(i + 1)][j].setEstadoAtual(LIVRE);
-                                    }
-                                    if (numeroMesa == 19 && matMesa[i+1][j+1].getEstadoAtual() != OCUPADA && matMesa[i][j+2].getEstadoAtual() != OCUPADA && matMesa[i-1][j+1].getEstadoAtual() != OCUPADA && matMesa[i-2][j].getEstadoAtual() != OCUPADA){ 
+                                    if (numeroMesa == 1){ 
+                                        if (matMesa[i][j+2].getEstadoAtual() != OCUPADA && matMesa[i+1][j+1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i][j+1].setEstadoAtual(LIVRE);
+                                        if (matMesa[i+1][j+1].getEstadoAtual() != OCUPADA && matMesa[i+2][j].getEstadoAtual() != OCUPADA)
                                             matMesa[i+1][j].setEstadoAtual(LIVRE);
-                                            matMesa[i][j + 1].setEstadoAtual(LIVRE);
+                                    }
+                                    if (numeroMesa == 7){
+                                        if (matMesa[i-1][j+1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i-1][j].setEstadoAtual(LIVRE);
+                                        if (matMesa[i-1][j+1].getEstadoAtual() != OCUPADA && matMesa[i][j+2].getEstadoAtual() != OCUPADA && matMesa[i+1][j+1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i][j+1].setEstadoAtual(LIVRE);
+                                        if (matMesa[i+1][j+1].getEstadoAtual() != OCUPADA && matMesa[i+2][j].getEstadoAtual() != OCUPADA)
+                                            matMesa[i+1][j].setEstadoAtual(LIVRE);
+                                    }
+                                    if (numeroMesa == 13){
+                                        if (matMesa[i-2][j].getEstadoAtual() != OCUPADA && matMesa[i-1][j+1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i-1][j].setEstadoAtual(LIVRE);
+                                        if (matMesa[i-1][j+1].getEstadoAtual() != OCUPADA && matMesa[i][j+2].getEstadoAtual() != OCUPADA && matMesa[i+1][j+1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i][j+1].setEstadoAtual(LIVRE);
+                                        if (matMesa[i+1][j+1].getEstadoAtual() != OCUPADA && matMesa[i+2][j].getEstadoAtual() != OCUPADA)
+                                            matMesa[i+1][j].setEstadoAtual(LIVRE);
+                                    }
+                                    if (numeroMesa == 19){
+                                        if (matMesa[i-2][j].getEstadoAtual() != OCUPADA && matMesa[i-1][j+1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i-1][j].setEstadoAtual(LIVRE);
+                                        if (matMesa[i-1][j+1].getEstadoAtual() != OCUPADA && matMesa[i][j+2].getEstadoAtual() != OCUPADA && matMesa[i+1][j+1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i][j+1].setEstadoAtual(LIVRE);
+                                        if (matMesa[i+1][j+1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i+1][j].setEstadoAtual(LIVRE);
+                                    }   
+                                    if (numeroMesa == 25){
+                                        if (matMesa[i][j+2].getEstadoAtual() != OCUPADA && matMesa[i-1][j+1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i][j+1].setEstadoAtual(LIVRE);
+                                        if (matMesa[i-2][j].getEstadoAtual() != OCUPADA && matMesa[i-1][j+1].getEstadoAtual() != OCUPADA)
                                             matMesa[i-1][j].setEstadoAtual(LIVRE);
                                     } 
-                                    if (numeroMesa == 13 && matMesa[i-2][j].getEstadoAtual() != OCUPADA && matMesa[i-1][j+1].getEstadoAtual() != OCUPADA && matMesa[i][j+2].getEstadoAtual() != OCUPADA && matMesa[i+1][j+1].getEstadoAtual() != OCUPADA && matMesa[i+2][j].getEstadoAtual() != OCUPADA){
-                                            matMesa[i-1][j].setEstadoAtual(LIVRE);
-                                            matMesa[i][(j + 1)].setEstadoAtual(LIVRE);
-                                            matMesa[(i + 1)][j].setEstadoAtual(LIVRE);
-                                    }
                                  }
                                  break;
-         
                                 
                             case 5:
-                                if (matMesa[i][j].getNumeroMesa() == numeroMesa){    
-                                    if (numeroMesa == 6 && matMesa[i][j-2].getEstadoAtual() != OCUPADA && matMesa[i+1][j-1].getEstadoAtual() != OCUPADA && matMesa[i+2][j].getEstadoAtual() != OCUPADA){ 
-                                        matMesa[i][j-1].setEstadoAtual(LIVRE);//bloquear mesa seguinte
-                                        matMesa[i+1][j].setEstadoAtual(LIVRE);//bloquear mesa inferior
-                                    }
-                                    if (numeroMesa == 12 && matMesa[i-1][j-1].getEstadoAtual() != OCUPADA && matMesa[i][j-2].getEstadoAtual() != OCUPADA && matMesa[i+1][j-1].getEstadoAtual() != OCUPADA && matMesa[i+2][j].getEstadoAtual() != OCUPADA){
-                                            matMesa[i-1][j].setEstadoAtual(LIVRE);
+                                if (matMesa[i][j].getNumeroMesa() == numeroMesa){
+                                    if (numeroMesa == 6){ 
+                                        if (matMesa[i][j-2].getEstadoAtual() != OCUPADA && matMesa[i+1][j-1].getEstadoAtual() != OCUPADA)
                                             matMesa[i][j-1].setEstadoAtual(LIVRE);
+                                        if (matMesa[i+1][j-1].getEstadoAtual() != OCUPADA && matMesa[i+2][j].getEstadoAtual() != OCUPADA)
                                             matMesa[i+1][j].setEstadoAtual(LIVRE);
+                                    }
+                                    if (numeroMesa == 12){
+                                        if (matMesa[i-1][j-1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i-1][j].setEstadoAtual(LIVRE);
+                                        if (matMesa[i-1][j-1].getEstadoAtual() != OCUPADA && matMesa[i][j-2].getEstadoAtual() != OCUPADA && matMesa[i+1][j-1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i][j-1].setEstadoAtual(LIVRE);
+                                        if (matMesa[i+1][j-1].getEstadoAtual() != OCUPADA && matMesa[i+2][j].getEstadoAtual() != OCUPADA)
+                                            matMesa[i+1][j].setEstadoAtual(LIVRE);
+                                    }
+                                    if (numeroMesa == 18){
+                                        if (matMesa[i-2][j].getEstadoAtual() != OCUPADA && matMesa[i-1][j-1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i-1][j].setEstadoAtual(LIVRE);
+                                        if (matMesa[i-1][j-1].getEstadoAtual() != OCUPADA && matMesa[i][j-2].getEstadoAtual() != OCUPADA && matMesa[i+1][j-1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i][j-1].setEstadoAtual(LIVRE);
+                                        if (matMesa[i+1][j-1].getEstadoAtual() != OCUPADA && matMesa[i+2][j].getEstadoAtual() != OCUPADA)
+                                            matMesa[i+1][j].setEstadoAtual(LIVRE);
+                                    }
+                                    if (numeroMesa == 24){
+                                        if (matMesa[i-2][j].getEstadoAtual() != OCUPADA && matMesa[i-1][j-1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i-1][j].setEstadoAtual(LIVRE);
+                                        if (matMesa[i-1][j-1].getEstadoAtual() != OCUPADA && matMesa[i][j-2].getEstadoAtual() != OCUPADA && matMesa[i+1][j-1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i][j-1].setEstadoAtual(LIVRE);
+                                        if (matMesa[i+1][j-1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i+1][j].setEstadoAtual(LIVRE);
+                                    }   
+                                    if (numeroMesa == 30){
+                                        if (matMesa[i][j-2].getEstadoAtual() != OCUPADA && matMesa[i-1][j-1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i][j-1].setEstadoAtual(LIVRE);
+                                        if (matMesa[i-2][j].getEstadoAtual() != OCUPADA && matMesa[i-1][j-1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i-1][j].setEstadoAtual(LIVRE);
                                     } 
-                                    if (numeroMesa == 18 && matMesa[i-2][j].getEstadoAtual() != OCUPADA && matMesa[i-1][j-1].getEstadoAtual() != OCUPADA && matMesa[i][j-2].getEstadoAtual() != OCUPADA && matMesa[i+1][j-1].getEstadoAtual() != OCUPADA && matMesa[i+2][j].getEstadoAtual() != OCUPADA){
-                                            matMesa[i-1][j].setEstadoAtual(LIVRE);
-                                            matMesa[i][j-1].setEstadoAtual(LIVRE);
-                                            matMesa[i+1][j].setEstadoAtual(LIVRE);
-                                    }
-                                    if (numeroMesa == 24 && matMesa[i-2][j].getEstadoAtual() != OCUPADA && matMesa[i-1][j-1].getEstadoAtual() != OCUPADA && matMesa[i][j-2].getEstadoAtual() != OCUPADA && matMesa[i+1][j-1].getEstadoAtual() != OCUPADA){ 
-                                            matMesa[i-1][j].setEstadoAtual(LIVRE);
-                                            matMesa[i][j-1].setEstadoAtual(LIVRE);
-                                            matMesa[i+1][j].setEstadoAtual(LIVRE);
-                                    }
-                                    if (numeroMesa == 30 && matMesa[i][j-2].getEstadoAtual() != OCUPADA && matMesa[i-1][j-1].getEstadoAtual() != OCUPADA && matMesa[i-2][j].getEstadoAtual() != OCUPADA){
-                                        matMesa[i][j-1].setEstadoAtual(LIVRE);//bloquear mesa superior
-                                        matMesa[i-1][j].setEstadoAtual(LIVRE);
-                                    }
-                                }
-                                break;
+                                 }
+                                 break;
                             }
                         
-                        /*Assim como foram tratados os casos das colunas 0 e 5, será tratado os casos correspondentes das linhas 0 e 5 */
                         switch (i){
                             case 0:
                                 if ((j > 0 && j < 5) && matMesa[i][j].getNumeroMesa() == numeroMesa){
-                                    if (numeroMesa == 2 && matMesa[i+1][j-1].getEstadoAtual() != OCUPADA && matMesa[i+2][j].getEstadoAtual() != OCUPADA && matMesa[i+1][j+1].getEstadoAtual() != OCUPADA && matMesa[i][j+2].getEstadoAtual() != OCUPADA){
-                                        matMesa[i][j-1].setEstadoAtual(LIVRE);
-                                        matMesa[i+1][(j)].setEstadoAtual(LIVRE);
-                                        matMesa[i][j+1].setEstadoAtual(LIVRE);
-                                    } else if (numeroMesa == 5 && matMesa[i][j-2].getEstadoAtual() != OCUPADA && matMesa[i+1][j-1].getEstadoAtual() != OCUPADA && matMesa[i+2][j].getEstadoAtual() != OCUPADA && matMesa[i+1][j+1].getEstadoAtual() != OCUPADA){
-                                        matMesa[i][j-1].setEstadoAtual(LIVRE);
-                                        matMesa[i+1][(j)].setEstadoAtual(LIVRE);
-                                        matMesa[i][j+1].setEstadoAtual(LIVRE);
-                                    } else {
-                                        if (matMesa[i][j-2].getEstadoAtual() != OCUPADA && matMesa[i+1][j-1].getEstadoAtual() != OCUPADA && matMesa[i+2][j].getEstadoAtual() != OCUPADA && matMesa[i+1][j+1].getEstadoAtual() != OCUPADA && matMesa[i][j+2].getEstadoAtual() != OCUPADA){
+                                    if (numeroMesa == 2){
+                                        if (matMesa[i+1][j-1].getEstadoAtual() != OCUPADA)
                                             matMesa[i][j-1].setEstadoAtual(LIVRE);
-                                            matMesa[i+1][(j)].setEstadoAtual(LIVRE);
+                                        if (matMesa[i+1][j-1].getEstadoAtual() != OCUPADA && matMesa[i+2][j].getEstadoAtual() != OCUPADA && matMesa[i+1][j+1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i+1][j].setEstadoAtual(LIVRE);
+                                        if (matMesa[i][j+2].getEstadoAtual() != OCUPADA && matMesa[i+1][j+1].getEstadoAtual() != OCUPADA)
                                             matMesa[i][j+1].setEstadoAtual(LIVRE);
-                                        }
+                                    } else  if (numeroMesa == 5){
+                                        if (matMesa[i][j-2].getEstadoAtual() != OCUPADA && matMesa[i+1][j-1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i][j-1].setEstadoAtual(LIVRE);
+                                        if (matMesa[i+1][j-1].getEstadoAtual() != OCUPADA && matMesa[i+2][j].getEstadoAtual() != OCUPADA && matMesa[i+1][j+1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i+1][j].setEstadoAtual(LIVRE);
+                                        if (matMesa[i+1][j+1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i][j+1].setEstadoAtual(LIVRE);   
+                                    } else {
+                                        if (matMesa[i][j-2].getEstadoAtual() != OCUPADA && matMesa[i+1][j-1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i][j-1].setEstadoAtual(LIVRE);
+                                        if (matMesa[i+1][j-1].getEstadoAtual() != OCUPADA && matMesa[i+2][j].getEstadoAtual() != OCUPADA && matMesa[i+1][j+1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i+1][j].setEstadoAtual(LIVRE);
+                                        if (matMesa[i][j+2].getEstadoAtual() != OCUPADA && matMesa[i+1][j+1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i][j+1].setEstadoAtual(LIVRE);
                                     }
                                 }
                                 break;
-                                // o mesmo acontece com a linha 4, com a diferença das posições das mesas
                             case 4:
                                 if ((j > 0 && j < 5) && matMesa[i][j].getNumeroMesa() == numeroMesa){
-                                    if (numeroMesa == 26 && matMesa[i-1][j-1].getEstadoAtual() != OCUPADA && matMesa[i-2][j].getEstadoAtual() != OCUPADA && matMesa[i-1][j+1].getEstadoAtual() != OCUPADA && matMesa[i][j+2].getEstadoAtual() != OCUPADA){
-                                        matMesa[i][j-1].setEstadoAtual(LIVRE);
-                                        matMesa[i-1][j].setEstadoAtual(LIVRE);
-                                        matMesa[i][j+1].setEstadoAtual(LIVRE);
-                                    } else if (numeroMesa == 29 && matMesa[i][j-2].getEstadoAtual() != OCUPADA && matMesa[i-1][j-1].getEstadoAtual() != OCUPADA && matMesa[i-2][j].getEstadoAtual() != OCUPADA && matMesa[i-1][j+1].getEstadoAtual() != OCUPADA){
-                                        matMesa[i][j-1].setEstadoAtual(LIVRE);
-                                        matMesa[i-1][(j)].setEstadoAtual(LIVRE);
-                                        matMesa[i][j+1].setEstadoAtual(LIVRE);
-                                    } else {
-                                        if (matMesa[i][j-2].getEstadoAtual() != OCUPADA && matMesa[i-1][j-1].getEstadoAtual() != OCUPADA && matMesa[i-2][j].getEstadoAtual() != OCUPADA && matMesa[i-1][j+1].getEstadoAtual() != OCUPADA && matMesa[i][j+2].getEstadoAtual() != OCUPADA){
+                                    if (numeroMesa == 26){
+                                        if (matMesa[i-1][j-1].getEstadoAtual() != OCUPADA)
                                             matMesa[i][j-1].setEstadoAtual(LIVRE);
-                                            matMesa[i-1][(j)].setEstadoAtual(LIVRE);
+                                        if (matMesa[i-1][j-1].getEstadoAtual() != OCUPADA && matMesa[i-2][j].getEstadoAtual() != OCUPADA && matMesa[i-1][j+1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i-1][j].setEstadoAtual(LIVRE);
+                                        if (matMesa[i][j+2].getEstadoAtual() != OCUPADA && matMesa[i-1][j+1].getEstadoAtual() != OCUPADA)
                                             matMesa[i][j+1].setEstadoAtual(LIVRE);
-                                        }
+                                    } else if (numeroMesa == 29) {
+                                        if (matMesa[i-1][j-1].getEstadoAtual() != OCUPADA && matMesa[i][j-2].getEstadoAtual() != OCUPADA)
+                                            matMesa[i][j-1].setEstadoAtual(LIVRE);
+                                        if (matMesa[i-1][j-1].getEstadoAtual() != OCUPADA && matMesa[i-2][j].getEstadoAtual() != OCUPADA && matMesa[i-1][j+1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i-1][j].setEstadoAtual(LIVRE);
+                                        if (matMesa[i-1][j+1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i][j+1].setEstadoAtual(LIVRE); 
+                                    } else {
+                                        if (matMesa[i][j-2].getEstadoAtual() != OCUPADA && matMesa[i-1][j-1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i][j-1].setEstadoAtual(LIVRE);
+                                        if (matMesa[i-1][j-1].getEstadoAtual() != OCUPADA && matMesa[i-2][j].getEstadoAtual() != OCUPADA && matMesa[i-1][j+1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i-1][j].setEstadoAtual(LIVRE);
+                                        if (matMesa[i][j+2].getEstadoAtual() != OCUPADA && matMesa[i-1][j+1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i][j+1].setEstadoAtual(LIVRE);
                                     }
                                 }
                                 break;
                         }
-                        
-                        /*No entanto, caso não se trate das colunas 0 e 5 e das linhas 0 e 4, então se trata das mesas centrais em que 
-                          será necessario bloquear 4 mesas ao inves de apenas 2 ou 3 como nos casos anteriores.
-                          Se isso for verdade e o número da mesa fornecido corresponder ao numero de alguma mesa na matriz,
-                          as mesas correspondetes ao redor da mesa ocupada serão bloqueadas para distanciamento*/
                         if((j != 0 && j != 5) && (i != 0 && i != 4) && matMesa[i][j].getNumeroMesa() == numeroMesa){
-                            if (matMesa[i-1][j-1].getEstadoAtual() != OCUPADA && matMesa[i-1][j+1].getEstadoAtual() != OCUPADA && matMesa[i+1][j-1].getEstadoAtual() != OCUPADA && matMesa[i+1][j+1].getEstadoAtual() != OCUPADA){
-                                matMesa[i-1][j].setEstadoAtual(LIVRE);//bloquear mesa anterior
-                                matMesa[i][j-1].setEstadoAtual(LIVRE);//bloquear mesa seguinte
-                                matMesa[i+1][j].setEstadoAtual(LIVRE);//bloquear mesa inferior
-                                matMesa[i][j+1].setEstadoAtual(LIVRE);//bloquear mesa superior
+                            switch (i){
+                                case 1:
+                                    if (j == 1){
+                                        if (matMesa[i-1][j-1].getEstadoAtual() != OCUPADA && matMesa[i-1][j+1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i-1][j].setEstadoAtual(LIVRE);
+                                        if (matMesa[i-1][j-1].getEstadoAtual() != OCUPADA && matMesa[i+1][j-1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i][j-1].setEstadoAtual(LIVRE);
+                                        if (matMesa[i-1][j+1].getEstadoAtual() != OCUPADA && matMesa[i][j+2].getEstadoAtual() != OCUPADA && matMesa[i+1][j+1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i][j+1].setEstadoAtual(LIVRE);
+                                        if (matMesa[i+1][j-1].getEstadoAtual() != OCUPADA && matMesa[i+2][j].getEstadoAtual() != OCUPADA && matMesa[i+1][j+1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i+1][j].setEstadoAtual(LIVRE);
+                                    } else if (j == 4){
+                                        if (matMesa[i-1][j-1].getEstadoAtual() != OCUPADA && matMesa[i-1][j+1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i-1][j].setEstadoAtual(LIVRE);
+                                        if (matMesa[i-1][j-1].getEstadoAtual() != OCUPADA && matMesa[i][j-2].getEstadoAtual() != OCUPADA && matMesa[i+1][j-1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i][j-1].setEstadoAtual(LIVRE);
+                                        if (matMesa[i-1][j+1].getEstadoAtual() != OCUPADA &&  matMesa[i+1][j+1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i][j+1].setEstadoAtual(LIVRE);
+                                        if (matMesa[i+1][j-1].getEstadoAtual() != OCUPADA && matMesa[i+2][j].getEstadoAtual() != OCUPADA && matMesa[i+1][j+1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i+1][j].setEstadoAtual(LIVRE);
+                                    } else {
+                                        if (matMesa[i-1][j-1].getEstadoAtual() != OCUPADA && matMesa[i-1][j+1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i-1][j].setEstadoAtual(LIVRE);
+                                        if (matMesa[i-1][j-1].getEstadoAtual() != OCUPADA && matMesa[i][j-2].getEstadoAtual() != OCUPADA && matMesa[i+1][j-1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i][j-1].setEstadoAtual(LIVRE);
+                                        if (matMesa[i-1][j+1].getEstadoAtual() != OCUPADA && matMesa[i+1][j+2].getEstadoAtual() != OCUPADA && matMesa[i+1][j+1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i][j+1].setEstadoAtual(LIVRE);
+                                        if (matMesa[i+1][j-1].getEstadoAtual() != OCUPADA && matMesa[i+2][j].getEstadoAtual() != OCUPADA && matMesa[i+1][j+1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i+1][j].setEstadoAtual(LIVRE);   
+                                    }
+                                    break;
+                                case 2:
+                                    if (j == 1){
+                                        if (matMesa[i-1][j-1].getEstadoAtual() != OCUPADA && matMesa[i-2][j].getEstadoAtual() != OCUPADA && matMesa[i-1][j+1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i-1][j].setEstadoAtual(LIVRE);
+                                        if (matMesa[i-1][j-1].getEstadoAtual() != OCUPADA && matMesa[i+1][j-1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i][j-1].setEstadoAtual(LIVRE);
+                                        if (matMesa[i-1][j+1].getEstadoAtual() != OCUPADA && matMesa[i][j+2].getEstadoAtual() != OCUPADA && matMesa[i+1][j+1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i][j+1].setEstadoAtual(LIVRE);
+                                        if (matMesa[i+1][j-1].getEstadoAtual() != OCUPADA && matMesa[i+2][j].getEstadoAtual() != OCUPADA && matMesa[i+1][j+1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i+1][j].setEstadoAtual(LIVRE);
+                                    } else if (j == 4){
+                                        if (matMesa[i-1][j-1].getEstadoAtual() != OCUPADA && matMesa[i-2][j].getEstadoAtual() != OCUPADA && matMesa[i-1][j+1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i-1][j].setEstadoAtual(LIVRE);
+                                        if (matMesa[i-1][j-1].getEstadoAtual() != OCUPADA && matMesa[i][j-2].getEstadoAtual() != OCUPADA && matMesa[i+1][j-1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i][j-1].setEstadoAtual(LIVRE);
+                                        if (matMesa[i-1][j+1].getEstadoAtual() != OCUPADA && matMesa[i+1][j+1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i][j+1].setEstadoAtual(LIVRE);
+                                        if (matMesa[i+1][j-1].getEstadoAtual() != OCUPADA && matMesa[i+2][j].getEstadoAtual() != OCUPADA && matMesa[i+1][j+1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i+1][j].setEstadoAtual(LIVRE);
+                                    } else {
+                                        if (matMesa[i-1][j-1].getEstadoAtual() != OCUPADA && matMesa[i-2][j].getEstadoAtual() != OCUPADA && matMesa[i-1][j+1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i-1][j].setEstadoAtual(LIVRE);
+                                        if (matMesa[i-1][j-1].getEstadoAtual() != OCUPADA && matMesa[i][j-2].getEstadoAtual() != OCUPADA && matMesa[i+1][j-1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i][j-1].setEstadoAtual(LIVRE);
+                                        if (matMesa[i-1][j+1].getEstadoAtual() != OCUPADA && matMesa[i][j+2].getEstadoAtual() != OCUPADA && matMesa[i+1][j+1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i][j+1].setEstadoAtual(LIVRE);
+                                        if (matMesa[i+1][j-1].getEstadoAtual() != OCUPADA && matMesa[i+2][j].getEstadoAtual() != OCUPADA && matMesa[i+1][j+1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i+1][j].setEstadoAtual(LIVRE);   
+                                    }
+                                    break;
+                                case 3:
+                                    if (j == 1){
+                                        if (matMesa[i-1][j-1].getEstadoAtual() != OCUPADA && matMesa[i-2][j].getEstadoAtual() != OCUPADA && matMesa[i-1][j+1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i-1][j].setEstadoAtual(LIVRE);
+                                        if (matMesa[i-1][j-1].getEstadoAtual() != OCUPADA && matMesa[i+1][j-1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i][j-1].setEstadoAtual(LIVRE);
+                                        if (matMesa[i-1][j+1].getEstadoAtual() != OCUPADA && matMesa[i][j+2].getEstadoAtual() != OCUPADA && matMesa[i+1][j+1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i][j+1].setEstadoAtual(LIVRE);
+                                        if (matMesa[i+1][j-1].getEstadoAtual() != OCUPADA && matMesa[i+1][j+1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i+1][j].setEstadoAtual(LIVRE);
+                                    } else if (j == 4){
+                                        if (matMesa[i-1][j-1].getEstadoAtual() != OCUPADA && matMesa[i-2][j].getEstadoAtual() != OCUPADA && matMesa[i-1][j+1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i-1][j].setEstadoAtual(LIVRE);
+                                        if (matMesa[i-1][j-1].getEstadoAtual() != OCUPADA && matMesa[i][j-2].getEstadoAtual() != OCUPADA && matMesa[i+1][j-1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i][j-1].setEstadoAtual(LIVRE);
+                                        if (matMesa[i-1][j+1].getEstadoAtual() != OCUPADA && matMesa[i+1][j+1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i][j+1].setEstadoAtual(LIVRE);
+                                        if (matMesa[i+1][j-1].getEstadoAtual() != OCUPADA && matMesa[i+1][j+1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i+1][j].setEstadoAtual(LIVRE);
+                                    } else {
+                                        if (matMesa[i-1][j-1].getEstadoAtual() != OCUPADA && matMesa[i-2][j].getEstadoAtual() != OCUPADA && matMesa[i-1][j+1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i-1][j].setEstadoAtual(LIVRE);
+                                        if (matMesa[i-1][j-1].getEstadoAtual() != OCUPADA && matMesa[i][j-2].getEstadoAtual() != OCUPADA && matMesa[i+1][j-1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i][j-1].setEstadoAtual(LIVRE);
+                                        if (matMesa[i-1][j+1].getEstadoAtual() != OCUPADA && matMesa[i][j+2].getEstadoAtual() != OCUPADA && matMesa[i+1][j+1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i][j+1].setEstadoAtual(LIVRE);
+                                        if (matMesa[i+1][j-1].getEstadoAtual() != OCUPADA && matMesa[i+1][j+1].getEstadoAtual() != OCUPADA)
+                                            matMesa[i+1][j].setEstadoAtual(LIVRE);   
+                                    }
+                                    break;
                             }
-                           
                         }
                     }
                 }
