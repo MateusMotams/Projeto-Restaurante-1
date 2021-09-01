@@ -153,6 +153,39 @@ public static void distanciamentoMesa(Mesa matMesa[][], int numeroMesa){
     }
 
 ```
+<h4>Chamada da função que faz a ocupação da mesa desejada.</h4>
+
+```
+public static void ocuparMesa(Mesa matMesa[][], int numeroMesa){
+        int i, j;
+        
+        if(numeroMesa >= 1 && numeroMesa <= 30){ 
+            for(i = 0; i < 5; i++){
+                for(j = 0; j < 6; j++){
+
+                    if(matMesa[i][j].getNumeroMesa() == numeroMesa){
+                        if(mesaLivre(matMesa, i, j) == true){
+                            matMesa[i][j].setEstadoAtual(OCUPADA);
+                            distanciamentoMesa(matMesa, numeroMesa);
+                            break;
+
+                        } else if (matMesa[i][j].isReserva() == true){
+                            matMesa[i][j].setEstadoAtual(OCUPADA);
+                            matMesa[i][j].setReserva(false);
+                            distanciamentoMesa(matMesa, numeroMesa);
+
+                        } else {
+                            System.out.println("\nErro: A mesa solicitada não pode ser ocupada no momento! Por favor, verique se ela não está OCUPADA, RESERVADA, bloqueada por SEGURANÇA ou se é para DESINFECTAR.");
+                        }
+                    }
+                }
+            }
+        }else{
+            System.out.println("\nErro: O numero de mesa digitado é invalido!\n");
+        }
+    }
+```
+
 # Instalação
 
 # Feedback
