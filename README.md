@@ -139,20 +139,7 @@ public static void distanciamentoMesa(Mesa matMesa[][], int numeroMesa){
     } 
 
 ```
-<h4>Chamada da função que promove a reserva da mesa a ser ocupada.</h4>
 
-```
- public static void reservarMesa(Mesa matMesa[][], int linha, int coluna){
-
-        if(mesaLivre(matMesa, linha, coluna) == true){ 
-            matMesa[linha][coluna].setReserva(true);
-            matMesa[linha][coluna].setEstadoAtual(RESERVADA);
-        }else{
-            System.out.println("\nErro: A mesa nao pode ser reservada no momento!\n");
-        }
-    }
-
-```
 <h4>Chamada da função que faz a ocupação da mesa desejada.</h4>
 
 ```
