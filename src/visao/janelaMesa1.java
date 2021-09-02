@@ -30,7 +30,7 @@ public class janelaMesa1 extends javax.swing.JFrame {
     // Função que retorna true se a mesa estiver livre e false se não estiver
     
     public static boolean mesaLivre(Mesa matMesa[][], int linha, int coluna){
-        if(matMesa[linha][coluna].estadoAtual == LIVRE && matMesa[linha][coluna].isReserva()== false){
+        if(matMesa[linha][coluna].estadoAtual == LIVRE){
             return true;
         }else{
             return false;
@@ -56,6 +56,17 @@ public class janelaMesa1 extends javax.swing.JFrame {
         }
     }
     
+    public static void cancelarReservaMesa(Mesa matMesa[][], int linha, int coluna){
+        /* caso a mesa esteja livre, então a variável booleana da classe mesa receberá true
+           e seu estado será trocado para RESERVADA */
+        if(matMesa[linha][coluna].isReserva () == true){ 
+            matMesa[linha][coluna].setReserva(false);
+            matMesa[linha][coluna].setEstadoAtual(LIVRE);
+        }else{
+            System.out.println("\nErro: A reserva da mesa não pode ser cancelada no momento!\n");
+        }
+    }
+    
     // função para criar uma mesa
     public static Mesa criarMesa(Mesa matMesa[][], int linha, int coluna, int cont){
         
@@ -73,7 +84,7 @@ public class janelaMesa1 extends javax.swing.JFrame {
     public static void desinfectarMesa(Mesa matMesa[][], int i, int j, int numeroMesa){ 
 
         if(matMesa[i][j].estadoAtual == DESINFECTAR){
-            matMesa[i][j].estadoAtual = LIVRE;
+            matMesa[i][j].setEstadoAtual(LIVRE);
             
             for(i = 0; i < 5; i++){
                  for(j = 0; j < 6; j++){
@@ -492,6 +503,7 @@ public class janelaMesa1 extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnDesocuparMesa = new javax.swing.JButton();
+        btnCancelarReserva = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -549,33 +561,39 @@ public class janelaMesa1 extends javax.swing.JFrame {
             }
         });
 
+        btnCancelarReserva.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnCancelarReserva.setText("Cancelar Reserva");
+        btnCancelarReserva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarReservaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(137, Short.MAX_VALUE)
+                .addGap(178, 178, 178)
+                .addComponent(jLabel2)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(139, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(159, 159, 159))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(btnReservar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnVoltar)
-                            .addGap(19, 19, 19))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(btnVerEstadoAtual, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnOcuparMesa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnDesinfectar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnDesocuparMesa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGap(133, 133, 133)))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(178, 178, 178)
-                .addComponent(jLabel2)
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btnOcuparMesa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnDesocuparMesa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnDesinfectar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnCancelarReserva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnVerEstadoAtual, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnReservar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(43, 43, 43)
+                        .addComponent(btnVoltar)
+                        .addGap(19, 19, 19))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -584,19 +602,25 @@ public class janelaMesa1 extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addComponent(btnVerEstadoAtual)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnOcuparMesa)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnDesocuparMesa)
-                .addGap(12, 12, 12)
-                .addComponent(btnDesinfectar)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnVoltar)
-                    .addComponent(btnReservar))
-                .addGap(18, 18, 18))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnVoltar)
+                        .addGap(18, 18, 18))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(btnVerEstadoAtual)
+                        .addGap(11, 11, 11)
+                        .addComponent(btnOcuparMesa)
+                        .addGap(11, 11, 11)
+                        .addComponent(btnDesocuparMesa)
+                        .addGap(11, 11, 11)
+                        .addComponent(btnDesinfectar)
+                        .addGap(11, 11, 11)
+                        .addComponent(btnReservar)
+                        .addGap(11, 11, 11)
+                        .addComponent(btnCancelarReserva)
+                        .addContainerGap(22, Short.MAX_VALUE))))
         );
 
         pack();
@@ -615,32 +639,61 @@ public class janelaMesa1 extends javax.swing.JFrame {
 
     private void btnOcuparMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOcuparMesaActionPerformed
         //ocuparMesa(this.matMesa, this.matMesa[0][0].getNumeroMesa());
-        this.vetMesa[linha][coluna].setEstadoAtual(OCUPADA);
-        this.vetMesa[linha][coluna] = vetMesa[linha][coluna];
-        distanciamentoMesa(this.vetMesa, this.vetMesa[linha][coluna].getNumeroMesa());
+        if (this.vetMesa[linha][coluna].getEstadoAtual() == LIVRE || this.vetMesa[linha][coluna].getEstadoAtual() == RESERVADA){
+            this.vetMesa[linha][coluna].setEstadoAtual(OCUPADA);
+            this.vetMesa[linha][coluna] = vetMesa[linha][coluna];
+            distanciamentoMesa(this.vetMesa, this.vetMesa[linha][coluna].getNumeroMesa());
         
-        JOptionPane.showMessageDialog(null, "A Mesa " + this.vetMesa[linha][coluna].getNumeroMesa() + " foi " + this.vetMesa[linha][coluna].getEstadoAtual() + " com sucesso!");
+            JOptionPane.showMessageDialog(null, "A Mesa " + this.vetMesa[linha][coluna].getNumeroMesa() + " foi " + this.vetMesa[linha][coluna].getEstadoAtual() + " com sucesso!");
+        } else if (this.vetMesa[linha][coluna].getEstadoAtual() == DESINFECTAR){
+            JOptionPane.showMessageDialog(null, "A Mesa " + this.vetMesa[linha][coluna].getNumeroMesa() + " precisa ser desinfectada antes de poder ser ocupada novamente!");
+        } else 
+            JOptionPane.showMessageDialog(null, "A Mesa " + this.vetMesa[linha][coluna].getNumeroMesa() + " já está " + this.vetMesa[linha][coluna].getEstadoAtual() + "!");
+        
     }//GEN-LAST:event_btnOcuparMesaActionPerformed
 
     private void btnDesinfectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesinfectarActionPerformed
-        desinfectarMesa(this.vetMesa, linha, coluna, vetMesa[linha][coluna].getNumeroMesa());
-        if(this.vetMesa[linha][coluna].getEstadoAtual() == LIVRE){
-            JOptionPane.showMessageDialog(null, "A Mesa " + this.vetMesa[linha][coluna].getNumeroMesa() + " foi desinfectada com sucesso!");
+        if (this.vetMesa[linha][coluna].getEstadoAtual() == DESINFECTAR){
+            desinfectarMesa(this.vetMesa, linha, coluna, vetMesa[linha][coluna].getNumeroMesa());
+            if(this.vetMesa[linha][coluna].getEstadoAtual() == LIVRE)
+                JOptionPane.showMessageDialog(null, "A Mesa " + this.vetMesa[linha][coluna].getNumeroMesa() + " foi desinfectada com sucesso!");
+        } else {
+            JOptionPane.showMessageDialog(null, "A Mesa " + this.vetMesa[linha][coluna].getNumeroMesa() + " não pode ser desinfectada no momento!");
         }
         
     }//GEN-LAST:event_btnDesinfectarActionPerformed
 
     private void btnDesocuparMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesocuparMesaActionPerformed
-        desocuparMesa(vetMesa, linha, coluna);
-        JOptionPane.showMessageDialog(null, "A Mesa " + this.vetMesa[linha][coluna].getNumeroMesa() + " foi desocupada com sucesso! Ela deve ser desinfectada!");
+        if (this.vetMesa[linha][coluna].getEstadoAtual() == OCUPADA){
+            desocuparMesa(vetMesa, linha, coluna);
+            JOptionPane.showMessageDialog(null, "A Mesa " + this.vetMesa[linha][coluna].getNumeroMesa() + " foi desocupada com sucesso! Ela deve ser desinfectada!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Esta ação não pode ser realizada no momento!");
+        }
     }//GEN-LAST:event_btnDesocuparMesaActionPerformed
 
     private void btnReservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReservarActionPerformed
-        reservarMesa(vetMesa, linha, coluna);
-        if(this.vetMesa[linha][coluna].getEstadoAtual() == RESERVADA){
-            JOptionPane.showMessageDialog(null, "A Mesa " + this.vetMesa[linha][coluna].getNumeroMesa() + " foi reservada com sucesso!");
+        if (this.vetMesa[linha][coluna].getEstadoAtual() == LIVRE){
+            reservarMesa(vetMesa, linha, coluna);
+            if(this.vetMesa[linha][coluna].getEstadoAtual() == RESERVADA)
+                JOptionPane.showMessageDialog(null, "A Mesa " + this.vetMesa[linha][coluna].getNumeroMesa() + " foi reservada com sucesso!");
+        } else if (this.vetMesa[linha][coluna].getEstadoAtual() == DESINFECTAR){
+             JOptionPane.showMessageDialog(null, "A Mesa " + this.vetMesa[linha][coluna].getNumeroMesa() + " precisa ser desinfectada antes de poder ser reservada novamente!");   
+        } else if (this.vetMesa[linha][coluna].getEstadoAtual() == OCUPADA){
+             JOptionPane.showMessageDialog(null, "A Mesa " + this.vetMesa[linha][coluna].getNumeroMesa() + " já está " + this.vetMesa[linha][coluna].getEstadoAtual() + "!");   
+        } else{
+            JOptionPane.showMessageDialog(null, "A Mesa " + this.vetMesa[linha][coluna].getNumeroMesa() + " já está " + this.vetMesa[linha][coluna].getEstadoAtual() + "!");
         }
     }//GEN-LAST:event_btnReservarActionPerformed
+
+    private void btnCancelarReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarReservaActionPerformed
+        if (this.vetMesa[linha][coluna].getEstadoAtual() == RESERVADA){
+            cancelarReservaMesa(this.vetMesa, linha, coluna);
+            JOptionPane.showMessageDialog(null, "A reserva da Mesa " + this.vetMesa[linha][coluna].getNumeroMesa() + " foi cancelada com sucesso!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Está ação não pode ser realizada no momento!");
+        }
+    }//GEN-LAST:event_btnCancelarReservaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -685,6 +738,7 @@ public class janelaMesa1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancelarReserva;
     private javax.swing.JButton btnDesinfectar;
     private javax.swing.JButton btnDesocuparMesa;
     private javax.swing.JButton btnOcuparMesa;
