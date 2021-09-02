@@ -204,8 +204,7 @@ public static void distanciamentoMesa(Mesa matMesa[][], int numeroMesa){
 
 # Feedback
 
-<img src="https://user-images.githubusercontent.com/81472331/131925956-390bf244-1917-449b-a740-82f4a4f32678.jpg"></img>
-<img src="https://user-images.githubusercontent.com/81472331/131925778-9dc2e310-1152-410f-a69f-de59ae640f11.jpg"></img>
+<img src="https://user-images.githubusercontent.com/81472331/131926733-179dcd6e-01ba-4410-81d6-bad38a891740.jpg"></img>
 
 
 # Tecnologias
