@@ -34,11 +34,11 @@ Metodologia usada para a criação da aplicação foi prototipagem rápida , que
 
 ```
 public static boolean mesaLivre(Mesa matMesa[][], int linha, int coluna){
-    if(matMesa[linha][coluna].estadoAtual == LIVRE && matMesa[linha][coluna] isReserva()== false){
-        return true;
-    }else{
-        return false;
-    }
+        if(matMesa[linha][coluna].estadoAtual == LIVRE){
+            return true;
+        }else{
+            return false;
+        }
 }
 ```
 <h4 align="center">Função verirficar se a mesa está livre em execução.</h4>
@@ -195,8 +195,6 @@ public static void ocuparMesa(Mesa matMesa[][], int numeroMesa){
 </p>
 
 # Instalação
-
-<h3>Como o java de sua maquina atualizado , basta ir até a aplicação após o download e fazer o duplo click no arquivo , java na pasta principal.</h3>
 
 # Feedback
 
