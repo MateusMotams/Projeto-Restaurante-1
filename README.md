@@ -33,15 +33,13 @@ Metodologia usada para a criação da aplicação foi prototipagem rápida , que
 
 
 ```
- public static void reservarMesa(Mesa matMesa[][], int linha, int coluna){
-        
-        if(mesaLivre(matMesa, linha, coluna) == true){ 
-            matMesa[linha][coluna].setReserva(true);
-            matMesa[linha][coluna].setEstadoAtual(RESERVADA);
-        }else{
-            System.out.println("\nErro: A mesa nao pode ser reservada no momento!\n");
-        }
+public static boolean mesaLivre(Mesa matMesa[][], int linha, int coluna){
+    if(matMesa[linha][coluna].estadoAtual == LIVRE && matMesa[linha][coluna] isReserva()== false){
+        return true;
+    }else{
+        return false;
     }
+}
 ```
 <h4 align="center">Função verirficar se a mesa está livre em execução.</h4>
 
@@ -53,15 +51,15 @@ Metodologia usada para a criação da aplicação foi prototipagem rápida , que
 <h4>Chamada da função para a reserva de uma mesa .</h4>
 
 ```
-public static void reservarMesa(Mesa matMesa[][], int linha, int coluna){
-    
-    if(mesaLivre(matMesa, linha, coluna) == true){ 
-        matMesa[linha][coluna].setReserva(true);
-        matMesa[linha][coluna].setEstadoAtual(RESERVADA);
-    }else{
-        System.out.println("\nErro: A mesa nao pode ser reservada no momento!\n");
+ public static void reservarMesa(Mesa matMesa[][], int linha, int coluna){
+        
+        if(mesaLivre(matMesa, linha, coluna) == true){ 
+            matMesa[linha][coluna].setReserva(true);
+            matMesa[linha][coluna].setEstadoAtual(RESERVADA);
+        }else{
+            System.out.println("\nErro: A mesa nao pode ser reservada no momento!\n");
+        }
     }
-}
 
 ```
 <h4 align="center">Função de reserva de mesa em excução.</h4>
