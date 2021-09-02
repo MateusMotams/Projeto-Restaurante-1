@@ -33,13 +33,15 @@ Metodologia usada para a criação da aplicação foi prototipagem rápida , que
 
 
 ```
-public static boolean mesaLivre(Mesa matMesa[][], int linha, int coluna){
-    if(matMesa[linha][coluna].estadoAtual == LIVRE && matMesa[linha][coluna] isReserva()== false){
-        return true;
-    }else{
-        return false;
+ public static void reservarMesa(Mesa matMesa[][], int linha, int coluna){
+        
+        if(mesaLivre(matMesa, linha, coluna) == true){ 
+            matMesa[linha][coluna].setReserva(true);
+            matMesa[linha][coluna].setEstadoAtual(RESERVADA);
+        }else{
+            System.out.println("\nErro: A mesa nao pode ser reservada no momento!\n");
+        }
     }
-}
 ```
 <h4 align="center">Função verirficar se a mesa está livre em execução.</h4>
 
@@ -195,6 +197,8 @@ public static void ocuparMesa(Mesa matMesa[][], int numeroMesa){
 </p>
 
 # Instalação
+
+<h3>Como o java de sua maquina atualizado , basta ir até a aplicação após o download e fazer o duplo click no arquivo , java na pasta principal.</h3>
 
 # Feedback
 
