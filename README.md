@@ -201,18 +201,12 @@ public static void distanciamentoMesa(Mesa matMesa[][], int numeroMesa){
 </p>
 
 # Instalação
-## Passos para executar o software GMR já compilado (arquivo .jar):
-1. Acessar a página da internet: https://github.com/MateusMotams/Projeto-Restaurante-GMR-
-2. Clicar no botão verde "Code"
-3. No menu aberto pelo botão do passo anterior, clique em "Download ZIP"
-4. Descompacte o arquivo .ZIP chamado "Projeto-Restaurante-GMR--master" com o uso do software de sua preferência (por exemplo: WinRAR, 7-Zip etc).
-5. Se após clicar com o botão direito do mouse no arquivo .ZIP do passo anterior, você selecionar a opção de "Extract Here/Extrair Aqui", você terá acesso à uma pasta chamada "Projeto-Restaurante-GMR--master", abra-a. Ou se você selecionar a opção "Extract to/Extrair para Projeto-Restaurante-GMR--master\" abra a pasta de mesmo nome (Projeto-Restaurante-GMR--master), neste método haverá uma subpasta com o mesmo nome antes de chegar aos arquivos principais.
-6. Abra a pasta "dist".
-7. Dentro da pasta "dist" clique duas vezes no ícone (ou no nome) do arquivo "Gerenciamento_de_Mesas_de_Restaurante__GMR_". Agora você pode usar o software GMR.
-8. (OPCIONAL) Caso você não tenha conseguido seguir o 1º Passo, provavelmente é preciso instalar o Java Runtime Environment (JRE) no link: https://www.java.com/pt-BR/download/manual.jsp
-9. (OPCIONAL) Abrir a IDE que ofereça suporte a Java de sua preferência e abrir o projeto da pasta "Projeto-Restaurante-GMR--master". Agora, você pode analisar os códigos-fontes produzidos pelos membros desta equipe de desenvolvimento e fazer novas compilações e/ou alterações na programação feita.
 
 # Feedback
+
+<img src="https://user-images.githubusercontent.com/81472331/131925956-390bf244-1917-449b-a740-82f4a4f32678.jpg"></img>
+<img src="https://user-images.githubusercontent.com/81472331/131925778-9dc2e310-1152-410f-a69f-de59ae640f11.jpg"></img>
+
 
 # Tecnologias
 <div>
@@ -227,7 +221,7 @@ public static void distanciamentoMesa(Mesa matMesa[][], int numeroMesa){
 
 # Colaboradores
 
-Raniery Alves Vasconcelos <a href = "mailto:raniery_vasconcelos@alu.ufc.br"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
+Raniery Vasconcelos <a href = "mailto:raniery_vasconcelos@alu.ufc.br"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
 
 Dominique <a href = "mailto:kossidominique@alu.ufc.br"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
 
