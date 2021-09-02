@@ -41,10 +41,12 @@ public static boolean mesaLivre(Mesa matMesa[][], int linha, int coluna){
     }
 }
 ```
-<h4>Função verirficar se a mesa está livre em execução.</h4>
+<h4 align="center">Função verirficar se a mesa está livre em execução.</h4>
 
-![ezgif com-gif-maker(4)](https://user-images.githubusercontent.com/81472331/131890755-3f0e9635-3a8b-48b9-9af0-259f9f5d8d5b.gif)
-
+<p align="center">
+    <img align="center" src="https://user-images.githubusercontent.com/81472331/131894549-c52ca7b4-f1df-4866-be37-358f97ccbb40.gif">
+    </img>
+</p>
 
 <h4>Chamada da função para a reserva de uma mesa .</h4>
 
@@ -60,9 +62,11 @@ public static void reservarMesa(Mesa matMesa[][], int linha, int coluna){
 }
 
 ```
-<h4>Função de reserva de mesa em excução.</h4>
+<h4 align="center">Função de reserva de mesa em excução.</h4>
 
-![ezgif com-gif-maker(1)](https://user-images.githubusercontent.com/81472331/131888387-8159e925-0191-44a6-8786-05a672d02a91.gif)
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/81472331/131895068-f7cd9b86-dc2f-4f36-85d3-1a74cde3ed93.gif">
+</p>
 
 <h4>Chamada da função que faz a principal função do codigo, promove distanciamento das mesas.</h4>
 
@@ -146,10 +150,11 @@ public static void distanciamentoMesa(Mesa matMesa[][], int numeroMesa){
     } 
 
 ```
-<h4>Após a função mesa ocupada ser chamada , principal função do codigo executada. </h4>
+<h4 align="center">Após a função mesa ocupada ser chamada , principal função do codigo executada. </h4>
 
-![ezgif com-gif-maker(2)](https://user-images.githubusercontent.com/81472331/131889003-3c9c0509-143a-47a5-9fab-079195e8dcdc.gif)
-
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/81472331/131895548-1b819e4e-f011-4050-967b-f09be4124024.gif">
+</p>
 
 <h4>Chamada da função que faz a ocupação da mesa desejada.</h4>
 
@@ -183,9 +188,11 @@ public static void ocuparMesa(Mesa matMesa[][], int numeroMesa){
         }
     }
 ```
-<h4>Função em execução </h4>
+<h4 align="center">Função em execução </h4>
 
-![ezgif com-gif-maker](https://user-images.githubusercontent.com/81472331/131886676-6de21d4a-b851-441a-b578-8afc1c0ee343.gif)
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/81472331/131895781-d931b533-24f0-47b7-aacb-15365662b4b3.gif">
+</p>
 
 # Instalação
 
@@ -193,7 +200,7 @@ public static void ocuparMesa(Mesa matMesa[][], int numeroMesa){
 
 # Tecnologias
 <div>
-    <img align="center" alt="Rafa-Js" height="70" width="70" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original-wordmark.svg">
+    <img align="center" height="70" width="70" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original-wordmark.svg">
 </div>
 
 # Features
