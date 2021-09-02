@@ -159,24 +159,29 @@ public static void distanciamentoMesa(Mesa matMesa[][], int numeroMesa){
 <h4>Chamada da função que faz a ocupação da mesa desejada.</h4>
 
 ```
-public static void ocuparMesa(Mesa matMesa[][], int numeroMesa){
+
+ public static void ocuparMesa(Mesa matMesa[][], int numeroMesa){
         int i, j;
         
-        if(numeroMesa >= 1 && numeroMesa <= 30){ 
+        if(numeroMesa >= 1 && numeroMesa <= 30){ // se o numero da mesa fornecido estiver entre 1 e 30, o restante do codigo é executado
             for(i = 0; i < 5; i++){
                 for(j = 0; j < 6; j++){
-
+                    /* se o numero da mesa fornecido corresponder ao numero de mesa em alguma posição da matriz e ela estiver livre, 
+                       entao seu estado é trocaddo para OCUPADA e, em seguida, a função de distanciamento é chamada
+                       para bloquear aas mesas ao redor para distanciamento social*/
                     if(matMesa[i][j].getNumeroMesa() == numeroMesa){
                         if(mesaLivre(matMesa, i, j) == true){
                             matMesa[i][j].setEstadoAtual(OCUPADA);
                             distanciamentoMesa(matMesa, numeroMesa);
                             break;
-
+                         /* caso a mesa esteja reservada, então seu estado atual sera trocado para OCUPADA
+                            a variavel reserva de Mesa será atualizada para false e, por fim, a função de distanciamento é chamada
+                            e para efetuar o distanciamento das mesas ao redor da mesa que sera ocupada*/
                         } else if (matMesa[i][j].isReserva() == true){
                             matMesa[i][j].setEstadoAtual(OCUPADA);
                             matMesa[i][j].setReserva(false);
                             distanciamentoMesa(matMesa, numeroMesa);
-
+                        // caso não seja nenhuma das opções anteriores, entao uma msg de erro sera mostrada e a mesa não podera ser ocupada
                         } else {
                             System.out.println("\nErro: A mesa solicitada não pode ser ocupada no momento! Por favor, verique se ela não está OCUPADA, RESERVADA, bloqueada por SEGURANÇA ou se é para DESINFECTAR.");
                         }
@@ -187,6 +192,7 @@ public static void ocuparMesa(Mesa matMesa[][], int numeroMesa){
             System.out.println("\nErro: O numero de mesa digitado é invalido!\n");
         }
     }
+
 ```
 <h4 align="center">Função em execução </h4>
 
