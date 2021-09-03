@@ -232,8 +232,16 @@ public static void distanciamentoMesa(Mesa matMesa[][], int numeroMesa){
 </div>
 
 # Features
+
 - [x] Cliente
-- [x] Gerenciamento de mesas (ocupar mesa, distanciamento das mesas, reservar mesa, cancelar reserva de mesa, desocupar mesa, desinfectar mesa, entre outros)
+- [x] Gerenciamento de mesas 
+    - [x] ocupar mesa
+    - [x] distanciamento das mesas
+    - [x] reservar mesa
+    - [x] cancelar reserva de mesa
+    - [x] desocupar mesa
+    - [x] desinfectar mesa
+    - [x] outras
 - [x] Mesa
 - [x] Interface gráfica (em Java)
 
