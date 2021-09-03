@@ -1,4 +1,4 @@
-# Reserva de Mesas Para Restaurante
+# Gerencimento de Mesas de Restaurante (GMR)
 
 
 
@@ -13,23 +13,25 @@
 </P>
 
 <h4 align="center">
-    🚧 Projeto em Construção... 🚧
+    Projeto Finalizado em 03/09/2021!
 </h4>
 
 # Sobre
 
-Solução para reserva de mesas no comércio de varejo alimentício.
+Solução de software para reserva de mesas no comércio de varejo alimentício.
 
-Metodologia usada para a criação da aplicação foi prototipagem rápida , que é uma coleção de técnicas formais e informais para desenvolvimento ,desmostração e avaliação do design de interfaces de úsuarios , que dá suporte a interações rápidas.
- 
+Modelo de Processo usado para a criação da aplicação foi Prototipagem Rápida, que é uma coleção de técnicas formais e informais para desenvolvimento, desmonstração e avaliação do design de interfaces de úsuarios, que dá suporte a interações rápidas.
 
+Em tempos de pandemia originada pela COVID-19 há uma preocupação muito grande com o distanciamento social e com os protocolos de segurança sanitária.
+
+Tendo isso em vista, é notório que os restaurantes são locais bastante frequentados e com risco de contágio maior, pensando nisso, este software visa manter o distanciamento social em restaurantes, baseando-se no gerenciamento de mesas presentes no local, e assim proporcionar um local seguro, que esteja de acordo com os protocolos sanitários, e que seja ideal para as pessoas aproveitarem ao máximo seu momento de lazer.
 
 # Funções
 
 <h3 align="center">Algumas funções implementadas na aplicação.</h3>
 
 
-<h4>Chamada da função para verirficar se a mesa está livre .</h4>
+<h4>Chamada da função para verificar se a mesa está livre .</h4>
 
 
 ```
@@ -41,7 +43,7 @@ public static boolean mesaLivre(Mesa matMesa[][], int linha, int coluna){
         }
 }
 ```
-<h4 align="center">Função verirficar se a mesa está livre em execução.</h4>
+<h4 align="center">Função que verirfica se a mesa está livre (em execução).</h4>
 
 <p align="center">
     <img align="center" src="https://user-images.githubusercontent.com/81472331/131894549-c52ca7b4-f1df-4866-be37-358f97ccbb40.gif">
@@ -68,7 +70,7 @@ public static boolean mesaLivre(Mesa matMesa[][], int linha, int coluna){
     <img src="https://user-images.githubusercontent.com/81472331/131895068-f7cd9b86-dc2f-4f36-85d3-1a74cde3ed93.gif">
 </p>
 
-<h4>Chamada da função que faz a principal função do codigo, promove distanciamento das mesas.</h4>
+<h4>Chamada da função que faz a principal função do codigo, promover o distanciamento seguro das mesas com etiqueta de "SEGURANÇA".</h4>
 
 
 ```
@@ -150,7 +152,7 @@ public static void distanciamentoMesa(Mesa matMesa[][], int numeroMesa){
     } 
 
 ```
-<h4 align="center">Após a função mesa ocupada ser chamada , principal função do codigo executada. </h4>
+<h4 align="center">Após a função de ocupar mesa ser chamada, o distanciamento seguro das mesas com etiqueta de "SEGURANÇA" (principal função do codigo) é aplicado. </h4>
 
 <p align="center">
     <img src="https://user-images.githubusercontent.com/81472331/131895548-1b819e4e-f011-4050-967b-f09be4124024.gif">
@@ -194,7 +196,7 @@ public static void distanciamentoMesa(Mesa matMesa[][], int numeroMesa){
     }
 
 ```
-<h4 align="center">Função em execução </h4>
+<h4 align="center">Função de ocupar mesa em execução </h4>
 
 <p align="center">
     <img src="https://user-images.githubusercontent.com/81472331/131895781-d931b533-24f0-47b7-aacb-15365662b4b3.gif">
@@ -217,7 +219,7 @@ public static void distanciamentoMesa(Mesa matMesa[][], int numeroMesa){
 <img align="center" src="https://user-images.githubusercontent.com/81472331/131927123-61a3dbaa-98ec-40c5-ac58-b41873bdba16.png"></img>
 
 
-<h4>Após ser testado foi contestado por parte de usuários falta da função cancelar reserva , após feita a alteração função abaixo executando.</h4>
+<h4>Após o software ser testado (por terceiros não envolvidos com trabalho e de forma voluntária) foi constastado por parte dos usuários a falta da função de cancelar a reserva de uma mesa. Após feita a respectiva alteração e atualização dos códigos-fonte, pode-se ser a função abaixo em execução.</h4>
 
 
 <p align="center">
@@ -231,20 +233,20 @@ public static void distanciamentoMesa(Mesa matMesa[][], int numeroMesa){
 
 # Features
 - [x] Cliente
-- [x] Gerenciamento de mesa
+- [x] Gerenciamento de mesas (ocupar mesa, distanciamento das mesas, reservar mesa, cancelar reserva de mesa, desocupar mesa, desinfectar mesa, entre outros)
 - [x] Mesa
-- [x] Interface gráfica
+- [x] Interface gráfica (em Java)
 
 # Colaboradores
 
-Raniery Vasconcelos <a href = "mailto:raniery_vasconcelos@alu.ufc.br"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
+Raniery Alves Vasconcelos (Matrícula: 473532) <a href = "mailto:raniery_vasconcelos@alu.ufc.br"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
 
-Dominique <a href = "mailto:kossidominique@alu.ufc.br"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
+Kossi Dominique (Matrícula: 422707) <a href = "mailto:kossidominique@alu.ufc.br"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
 
-Luan Gomes <a href = "mailto:luangomes@alu.ufc.br"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
+Luan Gomes (Matrícula: 473008) <a href = "mailto:luangomes@alu.ufc.br"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
 
-Mateus Mota <a href = "mailto:mateusms@alu.ufc.br"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
+Mateus Mota (Matrícula: 432342) <a href = "mailto:mateusms@alu.ufc.br"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
 
-Yara Braga <a href = "mailto:yrbraga@alu.ufc.br"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
+Yara Braga (Matrícula: 433931) <a href = "mailto:yrbraga@alu.ufc.br"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
 
-Kenedy <a href = "mailto:kenedyr14@alu.ufc.br"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
+Kenedy (Matrícula: 478937) <a href = "mailto:kenedyr14@alu.ufc.br"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
