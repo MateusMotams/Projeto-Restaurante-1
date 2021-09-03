@@ -219,7 +219,7 @@ public static void distanciamentoMesa(Mesa matMesa[][], int numeroMesa){
 <img align="center" src="https://user-images.githubusercontent.com/81472331/131927123-61a3dbaa-98ec-40c5-ac58-b41873bdba16.png"></img>
 
 
-<h4>Após o software ser testado (por terceiros não envolvidos com trabalho e de forma voluntária) foi constastado por parte dos usuários a falta da função de cancelar a reserva de uma mesa. Após feita a respectiva alteração e atualização dos códigos-fonte, pode-se ser a função abaixo em execução.</h4>
+<h4>Após o software ser testado (por terceiros não envolvidos com trabalho e de forma voluntária) foi constastado por parte dos usuários a falta da função de cancelar a reserva de uma mesa. Após feita a respectiva alteração e atualização dos códigos-fontes, pode-se ver a função abaixo em execução.</h4>
 
 
 <p align="center">
